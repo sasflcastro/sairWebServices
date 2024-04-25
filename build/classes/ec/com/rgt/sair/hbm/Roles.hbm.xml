@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.Roles" schema="USRSAIR" table="ROLES">
+  <id name="idRol" type="big_decimal">
+   <column name="ID_ROL" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="nombreRol" type="string">
+   <column length="100" name="NOMBRE_ROL" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="30" name="USUARIO_INGRESO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaInicio" type="timestamp">
+   <column length="7" name="FECHA_INICIO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioModificacion" type="string">
+   <column length="30" name="USUARIO_MODIFICACION"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaBaja" type="timestamp">
+   <column length="7" name="FECHA_BAJA"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

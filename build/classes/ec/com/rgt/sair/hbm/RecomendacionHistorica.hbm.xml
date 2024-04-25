@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/04/2014 11:54:37 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.RecomendacionHistorica" table="RECOMENDACION_HISTORICA" schema="USRSAIR">
+        <comment>ALMACENAR LAS RECOMENDACIONES CREADAS</comment>
+        <id name="idRecomendacionHistorica" type="big_decimal">
+            <column name="ID_RECOMENDACION_HISTORICA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+            <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairEstadoComplementario" class="ec.com.rgt.sair.hbm.SairEstadoComplementario" fetch="select" lazy="false">
+            <column name="ID_ESTADO_COMP" precision="22" scale="0">
+                <comment>Secuencial de tabla</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairDocConclusionDocumento" class="ec.com.rgt.sair.hbm.SairDocConclusionDocumento" fetch="select" lazy="false">
+            <column name="ID_CONCLUSION_DOCUMENTO" precision="22" scale="0">
+                <comment>Id de relacion con la tabla sair_doc_conclusion_documento</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairArea" class="ec.com.rgt.sair.hbm.SairArea" fetch="select" lazy="false">
+            <column name="ID_AREA" precision="22" scale="0">
+                <comment>Identificador del Area</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairAreasAdam" class="ec.com.rgt.sair.hbm.SairAreasAdam" fetch="select" lazy="false">
+            <column name="ID_AREA_EMPRESA" precision="22" scale="0" />
+        </many-to-one>
+        <property name="idRecomendacion" type="big_decimal">
+            <column name="ID_RECOMENDACION" precision="22" scale="0">
+                <comment>identificador de la recomendacion</comment>
+            </column>
+        </property>
+        <property name="personaEncargada" type="string">
+            <column name="PERSONA_ENCARGADA" length="30">
+                <comment>Persona encargada de la recomendacion</comment>
+            </column>
+        </property>
+        <property name="gerenteEncargado" type="string">
+            <column name="GERENTE_ENCARGADO" length="30">
+                <comment>Gerente encargado</comment>
+            </column>
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION">
+                <comment>Descripcion de la recomendacion</comment>
+            </column>
+        </property>
+        <property name="evaluacion" type="big_decimal">
+            <column name="EVALUACION" precision="22" scale="0">
+                <comment>porcentaje de evaluacion</comment>
+            </column>
+        </property>
+        <property name="fechaAtencionTotal" type="timestamp">
+            <column name="FECHA_ATENCION_TOTAL" length="7">
+                <comment>Fecha desde fue emitida hasta que fue atendida</comment>
+            </column>
+        </property>
+        <property name="fechaCompromiso" type="timestamp">
+            <column name="FECHA_COMPROMISO" length="7">
+                <comment>Fecha en que se compromete a ser atendida la recomendacion</comment>
+            </column>
+        </property>
+        <property name="fechaRespuesta" type="timestamp">
+            <column name="FECHA_RESPUESTA" length="7">
+                <comment>Fecha en que se responde la recomendacion</comment>
+            </column>
+        </property>
+        <property name="fechaDeBaja" type="timestamp">
+            <column name="FECHA_DE_BAJA" length="7">
+                <comment>Fecha en que se dio de baja la recomendacion</comment>
+            </column>
+        </property>
+        <property name="fechaDeEmision" type="timestamp">
+		   <column length="7" name="FECHA_DE_EMISION">
+		   </column>
+		</property>
+        <property name="dependeProveedor" type="string">
+            <column name="DEPENDE_PROVEEDOR" length="1">
+                <comment>S o N</comment>
+            </column>
+        </property>
+        <property name="codigo" type="string">
+            <column name="CODIGO" length="15" />
+        </property>
+        <property name="numero" type="big_decimal">
+            <column name="NUMERO" precision="22" scale="0" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="ano" type="big_decimal">
+            <column name="ANO" precision="22" scale="0" />
+        </property>
+        <property name="atendida" type="string">
+            <column name="ATENDIDA" length="20" />
+        </property>
+        <property name="areaEvaluada" type="string">
+            <column name="AREA_EVALUADA" length="100" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="conclusion" type="string">
+            <column name="CONCLUSION">
+                <comment>TMP</comment>
+            </column>
+        </property>
+        <property name="comentario" type="string">
+            <column name="COMENTARIO" length="4000" />
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="FECHA_ACTUALIZACION" length="7" />
+        </property>
+        <property name="errorOperativo" type="string">
+            <column name="ERROR_OPERATIVO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

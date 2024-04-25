@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-may-2014 14:31:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairLog" table="SAIR_LOG" schema="USRSAIR">
+        <id name="idLog" type="big_decimal">
+            <column name="ID_LOG" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairTipoLog" class="ec.com.rgt.sair.hbm.SairTipoLog" fetch="select" lazy="false">
+            <column name="ID_TIPO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="modulo" type="string">
+            <column name="MODULO" length="30" />
+        </property>
+        <property name="menu" type="string">
+            <column name="MENU" length="60" />
+        </property>
+        <property name="metodo" type="string">
+            <column name="METODO" length="30" />
+        </property>
+        <property name="linea" type="big_decimal">
+            <column name="LINEA" precision="22" scale="0" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="USUARIO" length="60" />
+        </property>
+        <property name="ipUsuario" type="string">
+            <column name="IP_USUARIO" length="30" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="60" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="log" type="string">
+            <column name="LOG" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

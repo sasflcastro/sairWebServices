@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocRequerimientoCorrecc"
+  schema="USRSAIR" table="SAIR_DOC_REQUERIMIENTO_CORRECC">
+  <comment>Almacenar datos del documento Requerimiento de correccion</comment>
+  <id name="idRc" type="big_decimal">
+   <column name="ID_RC" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo"
+   fetch="select" name="sairDocReservacionCodigo" update="true" insert="true" lazy="false">
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" not-null="true"
+    precision="22" scale="0">
+    <comment>Codigo secuencial de la tabla SAIR_Reservacion_Codigo</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadosPrincipal"
+   fetch="select" name="sairEstadosPrincipal" update="true" insert="true" lazy="false">
+   <column name="ID_ESTADO" not-null="true" precision="22" scale="0">
+    <comment>Secuencial de Tabla</comment>
+   </column>
+  </many-to-one>
+  <many-to-one name="sairDocAjusteCorreccion" class="ec.com.rgt.sair.hbm.SairDocAjusteCorreccion" fetch="select" lazy="false">
+      <column name="ID_AJUSTE" precision="22" scale="0" />
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocRiesgoDocumento" fetch="select" name="sairDocRiesgoDocumento" lazy="false">
+   <column name="ID_RIESGO" precision="22" scale="0">
+    <comment>Codigo secuencial de tabla riesgo</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="asunto" type="string">
+   <column length="4000" name="ASUNTO" not-null="true">
+    <comment>Asunto ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="antecedente" type="string">
+   <column name="ANTECEDENTE" >
+    <comment>Antecedente ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="prioridad" type="string">
+   <column length="50" name="PRIORIDAD" not-null="true">
+    <comment>Prioridad asignada de manera automatica al documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaElaboracion" type="timestamp">
+   <column length="7" name="FECHA_ELABORACION" not-null="true">
+    <comment>Fecha de elaboracion del documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaEmision" type="timestamp">
+   <column length="7" name="FECHA_EMISION">
+    <comment>Fecha de emision del documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="imagen" type="blob">
+   <column name="IMAGEN" >
+    <comment>Imagen asociada al documento, esta es opcional</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true"
+   name="cantidadRecomendaciones" type="big_decimal">
+   <column name="CANTIDAD_RECOMENDACIONES" 
+    precision="22" scale="0">
+    <comment>Numero de recomendaciones asignadas al RC</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="cantidadCasosRecuperar" type="big_decimal">
+   <column name="CANTIDAD_CASOS_RECUPERAR" 
+    precision="22" scale="0">
+    <comment>Cantidad de casos a recuperar, ingresada por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true"
+   name="errorOperativoTecnologico" type="string">
+   <column length="2" name="ERROR_OPERATIVO_TECNOLOGICO" >
+    <comment>Valor ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="valorRecuperar" type="big_decimal">
+   <column name="VALOR_RECUPERAR"  precision="22" scale="0">
+    <comment>Valor a recuperar ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="valorDevolver" type="big_decimal">
+   <column name="VALOR_DEVOLVER"  precision="22" scale="0">
+    <comment>Valor a devolver ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="cantidadCasosDevolver" type="big_decimal">
+   <column name="CANTIDAD_CASOS_DEVOLVER" precision="22" scale="0">
+    <comment>Cantidad de casos a devolver, ingresada por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="revisionSupervisor" type="string">
+   <column length="1" name="REVISION_SUPERVISOR" >
+    <comment>Verdadero en caso de que se realize la revision por parte del supervisor</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="revisionJefe" type="string">
+   <column length="1" name="REVISION_JEFE" >
+    <comment>Verdadero en caso de que se realize la revision por parte del jefe</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idEstadoComp" type="big_decimal">
+   <column name="ID_ESTADO_COMP" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+      <column name="ESTADO" length="1" />
+  </property>
+   <property generated="never" lazy="true" name="comentario" type="string">
+   <column length="200" name="COMENTARIO">
+    <comment>Comentario ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="alcance" type="string">
+   <column name="ALCANCE">
+    <comment>Alcance ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property name="prioridadAjuste" type="string">
+      <column name="PRIORIDAD_AJUSTE" length="20" />
+  </property>
+  <property generated="never" lazy="true" name="p" type="big_decimal">
+   <column name="P" precision="22" scale="0">
+   <comment>probabilidad sit</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="i" type="big_decimal">
+   <column name="I" precision="22" scale="0">
+   <comment>impacto sit</comment>
+   </column>
+  </property>
+   <property generated="never" lazy="true"
+   name="errorTecnologico" type="string">
+   <column length="2" name="ERROR_TECNOLOGICO">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="casosSinAfectacion" type="big_decimal">
+   <column name="CASOS_SIN_AFECTACION" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaEmisionReal" type="timestamp">
+   <column length="7" name="FECHA_EMISION_REAL"/>
+  </property>
+ </class>
+</hibernate-mapping>

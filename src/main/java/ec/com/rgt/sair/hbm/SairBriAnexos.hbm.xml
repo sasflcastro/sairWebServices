@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2016 10:47:19 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairBriAnexos" table="SAIR_BRI_ANEXOS" schema="USRSAIR">
+        <id name="idAnexo" type="big_decimal">
+            <column name="ID_ANEXO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairBriBrief" class="ec.com.rgt.sair.hbm.SairBriBrief" fetch="select" lazy="false">
+            <column name="ID_BRIEF" precision="22" scale="0" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" />
+        </property>
+        <property name="ruta" type="string">
+            <column name="RUTA" length="200" />
+        </property>
+        <property name="ext" type="string">
+            <column name="EXT" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

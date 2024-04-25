@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-sep-2014 14:27:54 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairRecConclusionReco" table="SAIR_REC_CONCLUSION_RECO" schema="USRSAIR">
+        <id name="idConReco" type="big_decimal">
+            <column name="ID_CON_RECO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairRecRecomendacion" class="ec.com.rgt.sair.hbm.SairRecRecomendacion" fetch="select" lazy="false">
+            <column name="ID_RECOMENDACION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sairDocConclusionDocumento" class="ec.com.rgt.sair.hbm.SairDocConclusionDocumento" fetch="select" lazy="false">
+            <column name="ID_CONCLUSION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-ago-2014 11:50:29 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairGerente" table="SAIR_GERENTE" schema="USRSAIR">
+        <id name="idGerente" type="big_decimal">
+            <column name="ID_GERENTE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="USUARIO" length="30" />
+        </property>
+        <property name="idUsuarioAic" type="string">
+            <column name="ID_USUARIO_AIC" length="30" />
+        </property>
+        <property name="idJefe" type="big_decimal">
+            <column name="ID_JEFE" precision="22" scale="0" />
+        </property>
+        <property name="idDepartamento" type="big_decimal">
+            <column name="ID_DEPARTAMENTO" precision="22" scale="0" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="CARGO" length="80" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="50" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="nombresCompletos" type="string">
+            <column name="NOMBRES_COMPLETOS" length="100" />
+        </property>
+        <property name="idArea" type="big_decimal">
+            <column name="ID_AREA" precision="22" scale="0" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="PROVINCIA" length="50" />
+        </property>
+	 	<property name="cedula" type="string">
+            <column name="CEDULA" length="11" />
+        </property>
+        <property name="exepcion" type="string">
+            <column name="EXEPCION" length="1" />
+        </property>
+        <property name="idLocalidad" type="string">
+            <column name="ID_LOCALIDAD" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

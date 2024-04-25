@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairFrecuencia" table="SAIR_FRECUENCIA" schema="USRSAIR">
+        <comment>Tabla que contiene los diferentes intervalos de tiempo en los que se ejecutan las rutinas</comment>
+        <id name="idFrecuencia" type="big_decimal">
+            <column name="ID_FRECUENCIA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreFrecuencia" type="string">
+            <column name="NOMBRE_FRECUENCIA" length="50" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

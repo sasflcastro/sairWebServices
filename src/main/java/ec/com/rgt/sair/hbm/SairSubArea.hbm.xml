@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2014 14:23:06 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairSubArea" table="SAIR_SUB_AREA" schema="USRSAIR">
+        <id name="idArea" type="big_decimal">
+            <column name="ID_SUB_AREA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="500" />
+        </property>
+        <property name="idDepartamento" type="big_decimal">
+            <column name="ID_DEPARTAMENTO" precision="22" scale="0" />
+        </property>
+        <property name="codiAdam" type="string">
+            <column name="CODI_ADAM" length="10" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="idGerente" type="string">
+            <column name="ID_GERENTE" length="30" />
+        </property>
+        <property name="subAreaPrincipal" type="string">
+            <column name="SUBAREA_PRINCIPAL" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

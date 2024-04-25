@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/08/2013 10:07:40 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.HistoricoClaves" schema="USRSAIR" table="HISTORICO_CLAVES">
+  <id name="idHistorico" type="big_decimal">
+   <column name="ID_HISTORICO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="idUsuario" type="string">
+   <column length="30" name="ID_USUARIO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="claveAnterior" type="string">
+   <column length="200" name="CLAVE_ANTERIOR"/>
+  </property>
+  <property generated="never" lazy="true" name="claveNueva" type="string">
+   <column length="200" name="CLAVE_NUEVA"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaCambio" type="date">
+   <column length="7" name="FECHA_CAMBIO"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioCambio" type="string">
+   <column length="30" name="USUARIO_CAMBIO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

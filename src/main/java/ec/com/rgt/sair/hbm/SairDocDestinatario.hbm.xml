@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="false">
+ <class name="ec.com.rgt.sair.hbm.SairDocDestinatario" schema="USRSAIR" table="SAIR_DOC_DESTINATARIO">
+  <id name="idDestinatario" type="big_decimal">
+   <column name="ID_DESTINATARIO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+      <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" not-null="true" />
+  </many-to-one>
+  <property name="usuarioEnvio" type="string">
+      <column name="USUARIO_ENVIO" length="30" not-null="true" />
+  </property>
+  <property name="emailPara" type="string">
+      <column name="EMAIL_PARA" length="1000" not-null="true" />
+  </property>
+  <property name="fechaRegistro" type="timestamp">
+      <column name="FECHA_REGISTRO" length="7" not-null="true" />
+  </property>
+  <property name="emailCopia" type="string">
+      <column name="EMAIL_COPIA" length="1000" />
+  </property>
+ </class>
+</hibernate-mapping>

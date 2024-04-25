@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairArea" schema="USRSAIR" table="SAIR_AREA">
+  <comment>Referencia a la tabla area que se encuentra en el framework de Seguridad</comment>
+  <id name="idArea" type="big_decimal">
+   <column name="ID_AREA" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="500" name="DESCRIPCION"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO"/>
+  </property>
+  <property generated="never" lazy="true" name="abreviaturaDep" type="string">
+   <column length="50" name="ABREVIATURA_DEP"/>
+  </property>
+  <property generated="never" lazy="true" name="abreviaturaArea" type="string">
+   <column length="100" name="ABREVIATURA_AREA"/>
+  </property>
+  <property generated="never" lazy="true" name="abreviaturaGeneral" type="string">
+   <column length="100" name="ABREVIATURA_GENERAL"/>
+  </property>
+  <property generated="never" lazy="true" name="orden" type="string">
+   <column length="20" name="ORDEN"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="jefeArea" type="string">
+   <column length="20" name="JEFE_AREA"/>
+  </property>
+  <property generated="never" lazy="true" name="email" type="string">
+   <column length="50" name="EMAIL"/>
+  </property>
+  <property generated="never" lazy="true" name="codBrief" type="string">
+   <column length="20" name="COD_BRIEF"/>
+  </property>
+  <property generated="never" lazy="true" name="idOperacion" type="string">
+   <column length="20" name="ID_OPERACION"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/08/2017 14:58:03 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairPrioridad" table="SAIR_PRIORIDAD" schema="USRSAIR">
+        <id name="idPrioridad" type="big_decimal">
+            <column name="ID_PRIORIDAD" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="prioridad" type="string">
+            <column name="PRIORIDAD" length="30" />
+        </property>
+        <property name="valorRecuperar" type="big_decimal">
+            <column name="VALOR_RECUPERAR" precision="22" scale="0" />
+        </property>
+        <property name="valorDevolver" type="big_decimal">
+            <column name="VALOR_DEVOLVER" precision="22" scale="0" />
+        </property>
+        <property name="casosRecuperar" type="big_decimal">
+            <column name="CASOS_RECUPERAR" precision="22" scale="0" />
+        </property>
+        <property name="casosDevolver" type="big_decimal">
+            <column name="CASOS_DEVOLVER" precision="22" scale="0" />
+        </property>
+        <property name="casosSinAfectacion" type="big_decimal">
+            <column name="CASOS_SIN_AFECTACION" precision="22" scale="0" />
+        </property>
+        <property name="errorOperativo" type="string">
+            <column name="ERROR_OPERATIVO" length="2" />
+        </property>
+        <property name="errorTecnologico" type="string">
+            <column name="ERROR_TECNOLOGICO" length="2" />
+        </property>
+         <property name="usuario" type="string">
+            <column name="USUARIO" length="30" not-null="true" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-feb-2014 15:13:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairDocPasos" table="SAIR_DOC_PASOS" schema="USRSAIR">
+        <id name="idPasos" type="big_decimal">
+            <column name="ID_PASOS" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+            <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" />
+        </many-to-one>
+        <property generated="never" lazy="true" name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="30" />
+        </property>
+        <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property generated="never" lazy="true" name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property generated="never" lazy="true" name="pasos" type="string">
+            <column name="PASOS" length="1000" />
+        </property>
+        <property generated="never" lazy="true" name="fechaActualiza" type="timestamp">
+		   <column length="7" name="FECHA_ACTUALIZA">
+		   </column>
+		</property>
+    </class>
+</hibernate-mapping>

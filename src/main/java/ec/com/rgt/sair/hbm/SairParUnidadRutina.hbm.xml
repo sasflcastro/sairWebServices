@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairParUnidadRutina" table="SAIR_PAR_UNIDAD_RUTINA" schema="USRSAIR">
+        <composite-id name="id" class="ec.com.rgt.sair.hbm.SairParUnidadRutinaId">
+            <key-property name="idSubArea" type="big_decimal">
+                <column name="ID_SUB_AREA" precision="22" scale="0" />
+            </key-property>
+            <key-property name="idRutina" type="big_decimal">
+                <column name="ID_RUTINA" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="sairSubArea" class="ec.com.rgt.sair.hbm.SairSubArea" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_SUB_AREA" length="30" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sairParRutina" class="ec.com.rgt.sair.hbm.SairParRutina" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_RUTINA" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="personaAsignada" type="string">
+            <column name="PERSONA_ASIGNADA" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-jun-2014 12:03:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairDocEscalamiento" table="SAIR_DOC_ESCALAMIENTO" schema="USRSAIR">
+        <id name="idEscalamiento" type="big_decimal">
+            <column name="ID_ESCALAMIENTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairDocTipoDocumento" class="ec.com.rgt.sair.hbm.SairDocTipoDocumento" fetch="select" lazy="false">
+            <column name="ID_TIPO_DOCUMENTO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="dias" type="big_decimal">
+            <column name="DIAS" precision="22" scale="0" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="fechaActualiza" type="date">
+            <column name="FECHA_ACTUALIZA" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

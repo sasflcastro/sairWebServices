@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairRecConclusionesRecomend"
+  schema="USRSAIR" table="SAIR_REC_CONCLUSIONES_RECOMEND">
+  <id name="idConclusionesRecomendacione" type="big_decimal">
+   <column name="ID_CONCLUSIONES_RECOMENDACIONE" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairRecRecomendacion"
+   fetch="select" name="sairRecRecomendacion" update="true" insert="true" lazy="false">
+   <column name="ID_RECOMENDACION" not-null="true" precision="22" scale="0">
+    <comment>Secuencial de tabla</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocConclusionDocumento"
+   fetch="select" name="sairDocConclusionDocumento" update="true" insert="true" lazy="false">
+   <column name="ID_CONCLUSION_DOCUMENTO" precision="22" scale="0">
+    <comment>Secuencial de tabla</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadosPrincipal"
+   fetch="select" name="sairEstadosPrincipal" update="true" insert="true" >
+   <column name="ID_ESTADO" precision="22" scale="0">
+    <comment>Secuencial de Tabla</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="detalle" type="string">
+   <column name="DETALLE"/>
+  </property>
+ </class>
+</hibernate-mapping>

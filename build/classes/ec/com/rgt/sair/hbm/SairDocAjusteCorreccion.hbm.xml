@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2015 9:48:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairDocAjusteCorreccion" table="SAIR_DOC_AJUSTE_CORRECCION" schema="USRSAIR">
+        <id name="idAjuste" type="big_decimal">
+            <column name="ID_AJUSTE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" />
+        </property>
+        <property name="prioridad" type="string">
+            <column name="PRIORIDAD" length="20" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

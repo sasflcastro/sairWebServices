@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocReservacionCodigo"
+  schema="USRSAIR" table="SAIR_DOC_RESERVACION_CODIGO">
+  <comment>Tabla para almacenar los codigos que seran utilizados por los documentos.</comment>
+  <id name="idSecuenciaReservaCodigo" type="big_decimal">
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" precision="22" scale="0"/>
+   <generator class="assigned">
+   </generator>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" name="sairParRutina" update="true" insert="true" lazy="false">
+   <column name="ID_RUTINA"  precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoDocumento"
+   fetch="select" name="sairDocTipoDocumento" update="true" insert="true" lazy="false">
+   <column name="ID_TIPO_DOCUMENTO" not-null="true" precision="22" scale="0">
+    <comment>Codigo del tipo de documento para el cual se genero el codigo</comment>
+   </column>
+  </many-to-one>
+  <many-to-one name="sairArea" class="ec.com.rgt.sair.hbm.SairArea" fetch="select" lazy="false">
+      <column name="ID_AREA" precision="22" scale="0" />
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadosPrincipal"
+   fetch="select" name="sairEstadosPrincipal" update="true" insert="true" lazy="false">
+   <column name="ID_ESTADO" not-null="true" precision="22" scale="0">
+    <comment>Secuencial de Tabla</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="idUsuarioAic" type="string">
+   <column length="30" name="ID_USUARIO_AIC" not-null="true">
+    <comment>Usuario que realiza la reservacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="usuarioUsaCod" type="string">
+   <column length="30" name="USUARIO_USA_COD">
+    <comment>ID Usuario quien usara el codigo, esto en el caso en que el usuario que genera el codigo no sea el mismo quien lo usara para la creacion del
+                documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="codigoReservado" type="string">
+   <column length="100" name="CODIGO_RESERVADO">
+    <comment>Codigo generado por el sistema para ser usado por los documentos</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaReserva" type="timestamp">
+   <column length="7" name="FECHA_RESERVA">
+    <comment>Fecha en que se realiza la reservacion de codigo</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="observacion" type="string">
+   <column name="OBSERVACION">
+    <comment>Descripcion adicional</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idEstadoComp" type="big_decimal">
+   <column name="ID_ESTADO_COMP" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="anioReserva" type="big_decimal">
+   <column name="ANIO_RESERVA" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+      <column name="ESTADO" length="1"/>
+  </property>
+  <property generated="never" lazy="true" name="idSecuenciaReservaHijo" type="big_decimal">
+      <column name="ID_SECUENCIA_RESERVA_HIJO" precision="22" scale="0" />
+  </property>
+  <property generated="never" lazy="true" name="codigo" type="big_decimal">
+   <column name="CODIGO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="temFechaPreliModReco" type="timestamp">
+   <column length="7" name="TEM_FECHA_PRELI_MODRECO">
+    <comment>Fecha en que se realiza la reservacion de codigo</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="anioEmision" type="big_decimal">
+   <column name="ANIO_EMISION" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="prioridad" type="big_decimal">
+   <column name="ID_PRIORIDAD" precision="22" scale="0"/>
+  </property>
+ </class>
+</hibernate-mapping>

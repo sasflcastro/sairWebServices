@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/12/2016 12:38:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairBriAcciones" table="SAIR_BRI_ACCIONES" schema="USRSAIR">
+        <id name="idAccion" type="big_decimal">
+            <column name="ID_ACCION" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairBriEstatus" class="ec.com.rgt.sair.hbm.SairBriEstatus" fetch="select" lazy="false">
+            <column name="ID_ESTATUS" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairBriBrief" class="ec.com.rgt.sair.hbm.SairBriBrief" fetch="select" lazy="false">
+            <column name="ID_BRIEF" precision="22" scale="0" />
+        </many-to-one>
+        <property name="accion" type="string">
+            <column name="ACCION" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="7" />
+        </property>
+        <property name="temp" type="big_decimal">
+            <column name="TEMP" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

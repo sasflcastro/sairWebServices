@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-ene-2014 10:08:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocDiscusionInf" schema="USRSAIR" table="SAIR_DOC_DISCUSION_INF">
+  <id name="idDiscusion" type="big_decimal">
+   <column name="ID_DISCUSION" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+   <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+       <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" not-null="true" />
+   </many-to-one>
+  <property generated="never" lazy="true" name="idUsuario" type="string">
+   <column length="30" name="ID_USUARIO"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="discusion" type="string">
+   <column name="DISCUSION"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO"/>
+  </property>
+  <property generated="never" lazy="true" name="url" type="string">
+   <column  name="URL"/>
+  </property>
+  <property generated="never" lazy="true" name="extencion" type="string" >
+   <column length="20" name="EXTENCION"/>
+  </property>
+ </class>
+</hibernate-mapping>

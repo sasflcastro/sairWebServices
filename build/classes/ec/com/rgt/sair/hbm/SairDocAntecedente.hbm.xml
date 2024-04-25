@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-feb-2015 14:36:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairDocAntecedente" table="SAIR_DOC_ANTECEDENTE" schema="USRSAIR">
+        <id name="idAntecedente" type="big_decimal">
+            <column name="ID_ANTECEDENTE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" lazy="false" fetch="select">
+            <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="antecedente" type="string">
+            <column name="ANTECEDENTE" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property generated="never" lazy="true" name="fechaActualiza" type="timestamp">
+		   <column length="7" name="FECHA_ACTUALIZA">
+		   </column>
+		</property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/01/2017 15:02:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairActaEstatus" table="SAIR_ACTA_ESTATUS" schema="USRSAIR">
+        <id name="idEstatus" type="big_decimal">
+            <column name="ID_ESTATUS" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nobre" type="string">
+            <column name="NOBRE" length="100" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

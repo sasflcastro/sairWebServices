@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.GruposMenu" table="GRUPOS_MENU" schema="USRSAIR">
+        <composite-id name="id" class="ec.com.rgt.sair.hbm.GruposMenuId">
+            <key-property name="idGrupo" type="big_decimal">
+                <column name="ID_GRUPO" precision="22" scale="0" />
+            </key-property>
+            <key-property name="idMenu" type="big_decimal">
+                <column name="ID_MENU" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="menues" class="ec.com.rgt.sair.hbm.Menues" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_MENU" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grupos" class="ec.com.rgt.sair.hbm.Grupos" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_GRUPO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="usuarioIngreso" type="string">
+            <column name="USUARIO_INGRESO" length="30" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="FECHA_INICIO" length="7" not-null="true" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="USUARIO_MODIFICACION" length="30" />
+        </property>
+        <property name="fechaBaja" type="date">
+            <column name="FECHA_BAJA" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

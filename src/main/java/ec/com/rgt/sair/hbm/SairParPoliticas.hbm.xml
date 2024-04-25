@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/09/2018 14:36:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="ec.com.rgt.sair.hbm.SairParPoliticas"
+		table="SAIR_PAR_POLITICAS" schema="USRSAIR">
+		<id name="idPolitica" type="big_decimal">
+			<column name="ID_POLITICA" precision="22" scale="0" />
+			<generator class="assigned" />
+		</id>
+		<property name="area" type="string">
+			<column name="AREA" length="400" />
+		</property>
+		<property name="secuenciaDocumento" type="string">
+			<column name="SECUENCIA_DOCUMENTO" length="400" />
+		</property>
+		<property name="macroproceso" type="string">
+			<column name="MACROPROCESO" length="400" />
+		</property>
+		<property name="proceso" type="string">
+			<column name="PROCESO" length="400" />
+		</property>
+		<property name="subproceso" type="string">
+			<column name="SUBPROCESO" length="400" />
+		</property>
+		<property name="asunto" type="string">
+			<column name="ASUNTO" length="4000" />
+		</property>
+		<property name="estado" type="string">
+			<column name="ESTADO" length="10" />
+		</property>
+		<property name="idonbase" type="string">
+			<column name="ID_ONBASE" length="10" />
+		</property>
+		<property name="url" type="string">
+			<column name="URL" length="10" />
+		</property>
+		<property name="nombreDocumento" type="string">
+			<column name="NOMBRE_DOCUMENTO" length="10" />
+		</property>
+	</class>
+</hibernate-mapping>

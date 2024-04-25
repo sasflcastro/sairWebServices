@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairRecEscalamiento" schema="USRSAIR" table="SAIR_REC_ESCALAMIENTO">
+  <comment>Almacenar el historial de escalamiento de una recomendacion</comment>
+  <id name="idEscalReco" type="big_decimal">
+   <column name="ID_ESCAL_RECO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairRecRecomendacion"
+   fetch="select" name="sairRecRecomendacion" update="false" insert="false" >
+   <column name="ID_RECOMENDACION" not-null="true" precision="22" scale="0">
+    <comment>Codigo de la recomendacion</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="idUsuario" type="string">
+   <column length="30" name="ID_USUARIO">
+    <comment>identificador de usuario a quien se escala el documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="usuarioAnterior" type="string">
+   <column length="30" name="USUARIO_ANTERIOR" not-null="true">
+    <comment>Usuario anteriormente encargado de la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaEscalamiento" type="timestamp">
+   <column length="7" name="FECHA_ESCALAMIENTO" not-null="true">
+    <comment>fecha en que se realiza el escalamiento</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

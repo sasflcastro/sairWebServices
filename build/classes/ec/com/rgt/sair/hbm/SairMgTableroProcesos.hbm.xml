@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/08/2018 14:36:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairMgTableroProcesos" table="SAIR_MG_TABLERO_PROCESOS" schema="USRSAIR">
+        <id name="id" type="big_decimal">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one class="ec.com.rgt.sair.hbm.SairMgRutinas" fetch="select" name="sairMgRutinaPadre" update="true" insert="true" lazy="false">
+		   	<column name="ID_RUTINA_PADRE" precision="22" scale="0">
+		   		<comment>Codigo de la tabla SAIR_MG_RUTINAS</comment>
+		   	</column>
+		</many-to-one>
+        <many-to-one class="ec.com.rgt.sair.hbm.SairMgRutinas" fetch="select" name="sairMgRutinaHijo" update="true" insert="true" lazy="false">
+		   	<column name="ID_RUTINA_HIJO" precision="22" scale="0">
+		   		<comment>Codigo de la tabla SAIR_MG_RUTINAS</comment>
+		   	</column>
+		</many-to-one>
+        <property name="idRutinaSair" type="big_decimal">
+            <column name="ID_RUTINA_SAIR" precision="22" scale="0" />
+        </property>
+        <property name="nivel" type="big_decimal">
+            <column name="NIVEL" precision="22" scale="0" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

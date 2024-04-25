@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairNotificacion" schema="USRSAIR" table="SAIR_NOTIFICACION">
+  <id name="idNotificacion" type="big_decimal">
+   <column name="ID_NOTIFICACION" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="fecha" type="timestamp">
+   <column length="7" name="FECHA" not-null="true">
+    <comment>fecha de ingreso de la notifiacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="300" name="DESCRIPCION" not-null="true">
+    <comment>descripcion adicional</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="tipo" type="string">
+   <column length="50" name="TIPO" not-null="true">
+    <comment>tipo de notifiacion que se envia</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="usuarioCreacion" type="string">
+   <column length="30" name="USUARIO_CREACION" not-null="true">
+    <comment>usuario que envia la notifiacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="modulo" type="string">
+   <column length="60" name="MODULO" not-null="true">
+    <comment>modulo que realiza la notificacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true">
+    <comment>usada para el eliminado logico</comment>
+   </column>
+  </property>
+   <property generated="never" lazy="true" name="usuarioDir" type="string">
+   <column length="30" name="USUARIO_DIR">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idDoc" type="big_decimal">
+   <column name="ID_DOC" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idTipoDoc" type="big_decimal">
+   <column name="ID_TIPO_DOC" precision="22" scale="0">
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

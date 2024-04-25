@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/04/2018 14:36:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairRecAreas" table="SAIR_REC_AREAS" schema="USRSAIR">
+        <id name="areaAplica" type="string">
+            <column name="AREA_APLICA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="unidad" type="string">
+            <column name="UNIDAD" length="200" />
+        </property>
+        <property name="codUnidad" type="big_decimal">
+        	<column name="CODIGO_UNIDAD" length="200" />
+        </property>
+        <property name="area" type="string">
+            <column name="AREA" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

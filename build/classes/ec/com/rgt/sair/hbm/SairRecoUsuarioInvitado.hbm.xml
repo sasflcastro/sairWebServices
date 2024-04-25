@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-jul-2015 18:29:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairRecoUsuarioInvitado" table="SAIR_RECO_USUARIO_INVITADO" schema="USRSAIR">
+        <id name="idRecoUi" type="big_decimal">
+            <column name="ID_RECO_UI" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="idRecomendacion" type="big_decimal">
+            <column name="ID_RECOMENDACION" precision="22" scale="0" />
+        </property>
+        <property name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

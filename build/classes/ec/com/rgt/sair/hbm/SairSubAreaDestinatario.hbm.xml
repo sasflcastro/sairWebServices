@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2014 14:23:06 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairSubAreaDestinatario" table="SAIR_SUB_AREA_DESTINATARIO" schema="USRSAIR">
+        <id name="idDestinatario" type="big_decimal">
+            <column name="ID_DESTINATARIO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="idSubArea" type="big_decimal">
+            <column name="ID_SUB_AREA" precision="22" scale="0" />
+        </property>
+        <property name="usuarioAd" type="string">
+            <column name="USUARIO_AD" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

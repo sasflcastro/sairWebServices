@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-nov-2014 9:06:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairPoliticasRutinas" table="SAIR_POLITICAS_RUTINAS" schema="USRSAIR">
+        <id name="idPolRut" type="big_decimal">
+            <column name="ID_POL_RUT" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="idPolitica" type="big_decimal">
+            <column name="ID_POLITICA" length="200" />
+        </property>
+        <property name="idRutina" type="big_decimal">
+            <column name="ID_RUTINA" length="200" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="200" />
+        </property>
+        <!--many-to-one name="idPolitica" class="ec.com.rgt.sair.hbm.SairParPoliticas" fetch="select" lazy="false">
+            <column name="ID_POLITICA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="idRutina" class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" lazy="false">
+            <column name="ID_RUTINA" precision="22" scale="0" />
+        </many-to-one-->
+    </class>
+</hibernate-mapping>

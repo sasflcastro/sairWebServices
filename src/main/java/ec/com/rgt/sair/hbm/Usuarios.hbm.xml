@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/10/2013 09:15:50 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.Usuarios" table="USUARIOS" schema="USRSAIR">
+        <comment>Contiene todos los usuarios que se van a conectar a las diferentes aplicaciones</comment>
+        <id name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairArea" class="ec.com.rgt.sair.hbm.SairArea" fetch="select" lazy="false">
+            <column name="ID_AREA" precision="22" scale="0" />
+        </many-to-one>
+        <property generated="never" lazy="true" name="clave" type="string">
+            <column name="CLAVE" length="199" />
+        </property>
+        <property generated="never" lazy="true" name="nombresCompletos" type="string">
+            <column name="NOMBRES_COMPLETOS" length="100" />
+        </property>
+        <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+            <column name="USUARIO_INGRESO" length="30" />
+        </property>
+        <property generated="never" lazy="true" name="usuarioModificacion" type="string">
+            <column name="USUARIO_MODIFICACION" length="30" />
+        </property>
+        <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property generated="never" lazy="true" name="fechaBaja" type="timestamp">
+            <column name="FECHA_BAJA" length="7" />
+        </property>
+        <property generated="never" lazy="true" name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property generated="never" lazy="true" name="nombre" type="string">
+            <column name="NOMBRE" length="100" />
+        </property>
+        <property generated="never" lazy="true" name="apellido" type="string">
+            <column name="APELLIDO" length="50" />
+        </property>
+        <property generated="never" lazy="true" name="email1" type="string">
+            <column name="EMAIL1" length="50" />
+        </property>
+        <property generated="never" lazy="true" name="email2" type="string">
+            <column name="EMAIL2" length="50" />
+        </property>
+        <property generated="never" lazy="true" name="firma" type="string">
+            <column name="FIRMA" length="100" />
+        </property>
+        <property generated="never" lazy="true" name="codigo" type="string">
+            <column name="CODIGO" length="30" />
+        </property>
+        <property generated="never" lazy="true" name="jefeInmediato" type="string">
+            <column name="JEFE_INMEDIATO" length="30" />
+        </property>
+        <property generated="never" lazy="true" name="cargo" type="string">
+            <column name="CARGO" length="100" />
+        </property>
+        <property generated="never" lazy="true" name="primerIngreso" type="string">
+            <column name="PRIMER_INGRESO" length="5" />
+        </property>
+        <property generated="never" lazy="true" name="fechaExpiracionClave" type="timestamp">
+            <column name="FECHA_EXPIRACION_CLAVE" length="7" />
+        </property>
+        <property generated="never"  name="numIntentos" type="big_decimal">
+            <column name="NUM_INTENTOS" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
+

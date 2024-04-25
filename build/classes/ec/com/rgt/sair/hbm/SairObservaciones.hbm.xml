@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-ago-2014 15:05:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairObservaciones" table="SAIR_OBSERVACIONES" schema="USRSAIR">
+        <comment>Observacion que se crea a partir de cada caso de una recomendacion</comment>
+        <id name="idObservacion" type="big_decimal">
+            <column name="ID_OBSERVACION" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairAreasAdam" class="ec.com.rgt.sair.hbm.SairAreasAdam" fetch="select" lazy="false">
+            <column name="ID_DEPARTAMENTO" precision="22" scale="0">
+                <comment>departamento en que trabaja el operador</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairObsComentarioAic" class="ec.com.rgt.sair.hbm.SairObsComentarioAic" fetch="select" lazy="false">
+            <column name="ID_COMENTARIO" precision="22" scale="0">
+                <comment>identificador del comentario</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+            <column name="ID_SECUENCIA_RESERVA_CODIGO" precision="22" scale="0">
+                <comment>Identificador del codigo reservado del informe</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairIncTipo" class="ec.com.rgt.sair.hbm.SairIncTipo" fetch="select" lazy="false">
+            <column name="ID_TIPO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairObsDetallesFaltas" class="ec.com.rgt.sair.hbm.SairObsDetallesFaltas" fetch="select" lazy="false">
+            <column name="ID_DETALLE_FALTAS" precision="22" scale="0">
+                <comment>identificador del detalle de la falta</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairSubArea" class="ec.com.rgt.sair.hbm.SairSubArea" fetch="select" lazy="false">
+            <column name="ID_SUB_AREA" precision="22" scale="0">
+                <comment>identificador del area del operador</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairArea" class="ec.com.rgt.sair.hbm.SairArea" fetch="select" lazy="false">
+            <column name="ID_AREA" precision="22" scale="0">
+                <comment>identificador del area en el que se crea la observacion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairObsTipoFalta" class="ec.com.rgt.sair.hbm.SairObsTipoFalta" fetch="select" lazy="false">
+            <column name="ID_TIPO_FALTA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairCiudad" class="ec.com.rgt.sair.hbm.SairCiudad" fetch="select" lazy="false">
+            <column name="ID_CIUDAD" precision="22" scale="0">
+                <comment>ciudad donde se encuentra el operador</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairObsAccionAdm" class="ec.com.rgt.sair.hbm.SairObsAccionAdm" fetch="select" lazy="false">
+            <column name="ID_ACCION_ADM" precision="22" scale="0">
+                <comment>identificador de la accion adm</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairRecRecomendacion" class="ec.com.rgt.sair.hbm.SairRecRecomendacion" fetch="select" lazy="false">
+            <column name="ID_RECOMENDACION" precision="22" scale="0">
+            </column>
+        </many-to-one>
+        <many-to-one name="sairObsTipoJustificacion" class="ec.com.rgt.sair.hbm.SairObsTipoJustificacion" fetch="select" lazy="false">
+            <column name="ID_TIPO_JUSTIFICACION" precision="22" scale="0">
+            </column>
+        </many-to-one>
+        <property name="idUsuarioAic" type="string">
+            <column name="ID_USUARIO_AIC" length="30">
+                <comment>identificador del auditor que ingresa la observacion</comment>
+            </column>
+        </property>
+        <property name="idOperador" type="string">
+            <column name="ID_OPERADOR" length="30">
+                <comment>identificador del operador que cometio el error operativo</comment>
+            </column>
+        </property>
+        <property name="idGerente" type="string">
+            <column name="ID_GERENTE" length="100">
+                <comment>gerente del operador</comment>
+            </column>
+        </property>
+        <property name="idSupervisor" type="string">
+            <column name="ID_SUPERVISOR" length="100">
+                <comment>supervisor del operador</comment>
+            </column>
+        </property>
+        <property name="cuenta" type="string">
+            <column name="CUENTA" length="30">
+                <comment>cuenta del caso</comment>
+            </column>
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="15">
+                <comment>Imei, Imsi, Id_servicio,etc? reportado</comment>
+            </column>
+        </property>
+        <property name="fechaCreacion" type="date">
+            <column name="FECHA_CREACION" length="7">
+                <comment>fecha de subida al modulo</comment>
+            </column>
+        </property>
+        <property name="observacion" type="string">
+            <column name="OBSERVACION" length="600">
+                <comment>Descripcion de error operativo cometido por el OPERADOR, debe ingresarse de acuerdo a los ingresados para no encontrar inconsistencias del
+                campo.</comment>
+            </column>
+        </property>
+        <property name="valor" type="big_decimal">
+            <column name="VALOR" precision="22" scale="0">
+                <comment>Costo del equipo/transaccion</comment>
+            </column>
+        </property>
+        <property name="mesPeriodo" type="string">
+            <column name="MES_PERIODO" length="2">
+                <comment>mes de analisis</comment>
+            </column>
+        </property>
+        <property name="anioPeriodo" type="big_decimal">
+            <column name="ANIO_PERIODO" precision="22" scale="0">
+                <comment>anio de analisis</comment>
+            </column>
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1">
+                <comment>Eliminacion logica</comment>
+            </column>
+        </property>
+        <property name="fechaActualiza" type="date">
+            <column name="FECHA_ACTUALIZA" length="7" />
+        </property>
+        <property name="codIncidencia" type="string">
+            <column name="COD_INCIDENCIA" length="50">
+                <comment>jefe del operador</comment>
+            </column>
+        </property>
+        <property name="valorAsociado" type="string">
+            <column name="VALOR_ASOCIADO" length="50">
+                <comment>De acuerdo al tipo de falta, se asocia un valor empresarial. Ej. PRODUCTIVIDAD, HONESTIDAD, etc</comment>
+            </column>
+        </property>
+        <property name="fechaRespAud" type="date">
+            <column name="FECHA_RESP_AUD" length="7" />
+        </property>
+        <property name="fechaRespOpe" type="date">
+            <column name="FECHA_RESP_OPE" length="7" />
+        </property>
+        <property name="idLocalidad" type="string">
+            <column name="ID_LOCALIDAD" length="200"/>
+        </property>
+        <property name="UsuarioAct" type="string">
+            <column name="USUARIO_ACT" length="30"/>
+        </property>
+    </class>
+</hibernate-mapping>

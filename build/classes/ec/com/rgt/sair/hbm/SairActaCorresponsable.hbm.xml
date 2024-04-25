@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/01/2017 15:02:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairActaCorresponsable" table="SAIR_ACTA_CORRESPONSABLE" schema="USRSAIR">
+        <composite-id name="id" class="ec.com.rgt.sair.hbm.SairActaCorresponsableId">
+            <key-property name="idCorresponsable" type="string">
+                <column name="ID_CORRESPONSABLE" length="30" />
+            </key-property>
+            <key-property name="idProyecto" type="big_decimal">
+                <column name="ID_PROYECTO" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="sairActaProyecto" class="ec.com.rgt.sair.hbm.SairActaProyecto" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_PROYECTO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

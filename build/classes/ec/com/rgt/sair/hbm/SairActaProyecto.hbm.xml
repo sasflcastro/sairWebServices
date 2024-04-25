@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/01/2017 14:28:35 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairActaProyecto" table="SAIR_ACTA_PROYECTO" schema="USRSAIR">
+        <id name="idProyecto" type="big_decimal">
+            <column name="ID_PROYECTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairActaTipos" class="ec.com.rgt.sair.hbm.SairActaTipos" fetch="select" lazy="false">
+            <column name="ID_TIPO_ACTA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairActaTipo" class="ec.com.rgt.sair.hbm.SairActaTipo" fetch="select" lazy="false">
+            <column name="ID_TIPO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairActaEstatus" class="ec.com.rgt.sair.hbm.SairActaEstatus" fetch="select" lazy="false">
+            <column name="ID_ESTATUS" precision="22" scale="0" />
+        </many-to-one>
+        <property name="fechaApertura" type="date">
+            <column name="FECHA_APERTURA" length="7" />
+        </property>
+        <property name="solicitante" type="string">
+            <column name="SOLICITANTE" length="30" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="500" />
+        </property>
+        <property name="objetivo" type="string">
+            <column name="OBJETIVO" length="300" />
+        </property>
+        <property name="idResponsable" type="string">
+            <column name="ID_RESPONSABLE" length="30" />
+        </property>
+        <property name="fechaObjectivo" type="date">
+            <column name="FECHA_OBJECTIVO" length="7" />
+        </property>
+        <property name="fechaRealFin" type="date">
+            <column name="FECHA_REAL_FIN" length="7" />
+        </property>
+        <property name="idActaDependiente" type="big_decimal">
+            <column name="ID_ACTA_DEPENDIENTE" precision="22" scale="0" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="comentarioSolicitud" type="string">
+            <column name="COMENTARIO_SOLICITUD" length="300" />
+        </property>
+        <property name="idUsuarioSolicitud" type="string">
+            <column name="ID_USUARIO_SOLICITUD" length="30" />
+        </property>
+       <property name="num" type="big_decimal">
+            <column name="NUM" precision="22" scale="0" />
+        </property>
+        <property name="idHito" type="big_decimal">
+            <column name="ID_HITO" precision="22" scale="0" />
+        </property>
+        <property name="idArea" type="big_decimal">
+            <column name="ID_AREA" precision="22" scale="0" />
+        </property>
+        <property name="fechaSolicitudCierre" type="date">
+            <column name="FECHA_SOLICITUD_CIERRE" length="7" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="FECHAINICIO" length="7" />
+        </property>
+        <property name="entregable" type="string">
+            <column name="ENTREGABLE" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

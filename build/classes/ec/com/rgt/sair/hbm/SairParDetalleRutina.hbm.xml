@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-jul-2014 9:06:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairParDetalleRutina" table="SAIR_PAR_DETALLE_RUTINA" schema="USRSAIR">
+        <id name="idDetalleRutina" type="big_decimal">
+            <column name="ID_DETALLE_RUTINA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairParRutina" class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" lazy="false">
+            <column name="ID_RUTINA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+            <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="idAsignado" type="string">
+            <column name="ID_ASIGNADO" length="30" />
+        </property>
+        <property name="idEjecutor" type="string">
+            <column name="ID_EJECUTOR" length="30" />
+        </property>
+        <property name="fechaEjecucion" type="date">
+            <column name="FECHA_EJECUCION" length="7" />
+        </property>
+        <property name="afirmaNiega" type="string">
+            <column name="AFIRMA_NIEGA" length="2" />
+        </property>
+        <property name="semanaEmitido" type="big_decimal">
+            <column name="SEMANA_EMITIDO" precision="22" scale="0" />
+        </property>
+        <property name="justificado" type="string">
+            <column name="JUSTIFICADO" length="2" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="comentario" type="string">
+            <column name="COMENTARIO" length="1000" />
+        </property>
+        <property name="anio" type="big_decimal">
+            <column name="ANIO" precision="22" scale="0" />
+        </property>
+        <property name="mes" type="big_decimal">
+            <column name="MES" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

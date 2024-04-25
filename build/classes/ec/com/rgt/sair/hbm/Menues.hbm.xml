@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="ec.com.rgt.sair.hbm.Menues" schema="USRSAIR" table="MENUES">
+  <id name="idMenu" type="big_decimal">
+   <column name="ID_MENU" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property name="idMenuPadre" type="big_decimal" lazy="true">
+            <column name="ID_MENU_PADRE" precision="22" scale="0" />
+  </property>
+  <property generated="never" lazy="true" name="descripcion" type="string" >
+   <column length="150" name="DESCRIPCION" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="rutaAcceso" type="string">
+   <column length="4000" name="RUTA_ACCESO"/>
+  </property>
+  <property generated="never" lazy="true" name="orden" type="big_decimal">
+   <column name="ORDEN" not-null="true" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="30" name="USUARIO_INGRESO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaInicio" type="timestamp">
+   <column length="7" name="FECHA_INICIO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioModificacion" type="string">
+   <column length="30" name="USUARIO_MODIFICACION"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaBaja" type="timestamp">
+   <column length="7" name="FECHA_BAJA"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true"/>
+  </property>
+  <property name="idAplicacion" type="big_decimal" lazy="true">
+     <column name="ID_APLICACION" precision="22" scale="0" />
+  </property>
+ </class>
+</hibernate-mapping>

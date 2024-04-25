@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-nov-2014 16:38:43 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.UsuariosAD" table="USUARIOS_AD" schema="USRSAIR">
+        <id name="idUsuariosAD" type="big_decimal">
+            <column name="ID_USUARIOS_AD" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombresCompletos" type="string">
+            <column name="NOMBRES_COMPLETOS" length="100" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="USUARIO" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="areaAdam" type="string">
+            <column name="AREA_ADAM" length="100" />
+        </property>
+        <property name="usuariosAdam" type="string">
+            <column name="USUARIOS_ADAM" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

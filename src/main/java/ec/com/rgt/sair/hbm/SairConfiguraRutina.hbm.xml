@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-nov-2014 9:06:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairConfiguraRutina" table="SAIR_CONFIGURA_RUTINA" schema="USRSAIR">
+        <id name="idConfigura" type="big_decimal">
+            <column name="ID_CONFIGURA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairParRutinaByIdRutinaHija" class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" lazy="false">
+            <column name="ID_RUTINA_HIJA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairParRutinaByIdRutinaPadre" class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" lazy="false">
+            <column name="ID_RUTINA_PADRE" precision="22" scale="0" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

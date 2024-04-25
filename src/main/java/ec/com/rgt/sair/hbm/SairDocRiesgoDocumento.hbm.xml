@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocRiesgoDocumento"
+  schema="USRSAIR" table="SAIR_DOC_RIESGO_DOCUMENTO">
+  <comment>Tabla para mantener en catalogo los tipos de riesgo que puede tener un documento</comment>
+  <id name="idRiesgo" type="big_decimal">
+   <column name="ID_RIESGO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="50" name="DESCRIPCION" not-null="true">
+    <comment>Nombre del riesgo: - Suspend - Juridico - Bypass - Fraude - Ingresos no percibidos - Otros/Puntual</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO" not-null="true">
+    <comment>Fecha de ingreso del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaActualizacion" type="timestamp">
+   <column length="7" name="FECHA_ACTUALIZACION" not-null="true">
+    <comment>Fecha de actualizacion del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="30" name="USUARIO_INGRESO" not-null="true">
+    <comment>Usuario que ingreso el registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="usuarioActualizacion" type="string">
+   <column length="30" name="USUARIO_ACTUALIZACION" not-null="true">
+    <comment>Usuario de actualizacion de registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

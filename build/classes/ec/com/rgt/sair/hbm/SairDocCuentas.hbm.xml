@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairDocCuentas" table="SAIR_DOC_CUENTAS" schema="USRSAIR">
+        <composite-id name="id" class="ec.com.rgt.sair.hbm.SairDocCuentasId">
+            <key-property name="idTipoDocumento" type="big_decimal">
+                <column name="ID_TIPO_DOCUMENTO" precision="22" scale="0" />
+            </key-property>
+            <key-property name="idTipoInforme" type="big_decimal">
+                <column name="ID_TIPO_INFORME" precision="22" scale="0" />
+            </key-property>
+            <key-property name="idCampo" type="big_decimal">
+                <column name="ID_CAMPO" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <property name="destinatario" type="string">
+            <column name="DESTINATARIO" length="5">
+                <comment>PARA/COPIA</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

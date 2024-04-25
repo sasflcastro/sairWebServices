@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-ene-2015 10:22:34 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.TblProceAmx" table="TBL_PROCE_AMX" schema="USRSAIR">
+        <id name="id" type="string">
+            <column name="ID" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="codprocedimiento" type="string">
+            <column name="CODPROCEDIMIENTO" length="5" />
+        </property>
+        <property name="procedimiento" type="string">
+            <column name="PROCEDIMIENTO" length="100" />
+        </property>
+        <property name="fechainicioejecucion" type="string">
+            <column name="FECHAINICIOEJECUCION" length="15" />
+        </property>
+        <property name="fechafinejecucion" type="string">
+            <column name="FECHAFINEJECUCION" length="15" />
+        </property>
+        <property name="premisa" type="string">
+            <column name="PREMISA" length="1000" />
+        </property>
+        <property name="objetivo" type="string">
+            <column name="OBJETIVO" length="20" />
+        </property>
+        <property name="rojo" type="string">
+            <column name="ROJO" length="20" />
+        </property>
+        <property name="unidadmedida" type="string">
+            <column name="UNIDADMEDIDA" length="10" />
+        </property>
+        <property name="tamanomuestra" type="string">
+            <column name="TAMANOMUESTRA" length="20" />
+        </property>
+        <property name="inconsistencia" type="string">
+            <column name="INCONSISTENCIA" length="20" />
+        </property>
+        <property name="porcConsistencia" type="string">
+            <column name="PORC_CONSISTENCIA" length="20" />
+        </property>
+        <property name="impactoeconomico" type="string">
+            <column name="IMPACTOECONOMICO" length="20" />
+        </property>
+        <property name="valorrealproyectado" type="string">
+            <column name="VALORREALPROYECTADO" length="10" />
+        </property>
+        <property name="recuperableajustable" type="string">
+            <column name="RECUPERABLEAJUSTABLE" length="10" />
+        </property>
+        <property name="causaraiz" type="string">
+            <column name="CAUSARAIZ" length="1500" />
+        </property>
+        <property name="accionesdesolucion" type="string">
+            <column name="ACCIONESDESOLUCION" length="1500" />
+        </property>
+        <property name="fechacompromiso" type="string">
+            <column name="FECHACOMPROMISO" length="15" />
+        </property>
+        <property name="responsablesolucion" type="string">
+            <column name="RESPONSABLESOLUCION" length="70" />
+        </property>
+        <property name="estatus" type="string">
+            <column name="ESTATUS" length="20" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="OBSERVACIONES" length="1500" />
+        </property>
+        <property name="gerencia" type="string">
+            <column name="GERENCIA" length="100" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="100" />
+        </property>
+        <property name="director" type="string">
+            <column name="DIRECTOR" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
+ 

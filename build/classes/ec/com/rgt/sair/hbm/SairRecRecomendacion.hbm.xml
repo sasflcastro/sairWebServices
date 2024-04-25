@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairRecRecomendacion" schema="USRSAIR" table="SAIR_REC_RECOMENDACION">
+  <comment>ALMACENAR LAS RECOMENDACIONES CREADAS</comment>
+  <id name="idRecomendacion" type="big_decimal">
+   <column name="ID_RECOMENDACION" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one name="sairDocReservacionCodigo" class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" lazy="false">
+      <column name="ID_RESERVACION_CODIGO" precision="22" scale="0" />
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairArea" fetch="select" name="sairArea" update="true" insert="true" lazy="false">
+   <column name="ID_AREA"  precision="22" scale="0">
+    <comment>Identificador del Area</comment>
+   </column>
+  </many-to-one>
+  <many-to-one name="sairEstadoComplementario" class="ec.com.rgt.sair.hbm.SairEstadoComplementario" fetch="select" lazy="false">
+      <column name="ID_ESTADO_COMP" precision="22" scale="0">
+          <comment>Secuencial de tabla</comment>
+      </column>
+  </many-to-one>
+  <many-to-one name="sairAreasAdam" class="ec.com.rgt.sair.hbm.SairAreasAdam" fetch="select" lazy="false">
+      <column name="ID_AREA_EMPRESA" precision="22" scale="0" />
+  </many-to-one>
+  <many-to-one name="sairEstadoReco" class="ec.com.rgt.sair.hbm.SairEstadoReco" fetch="select" lazy="false">
+      <column name="ID_ESTADO_RECO" precision="22" scale="0" />
+  </many-to-one>
+  <property generated="never" lazy="true" name="personaEncargada" type="string">
+   <column length="30" name="PERSONA_ENCARGADA">
+    <comment>Persona encargada de la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="gerenteEncargado" type="string">
+   <column length="30" name="GERENTE_ENCARGADO">
+    <comment>Gerente encargado</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="gerenteAnt" type="string">
+   <column length="30" name="GERENTE_ANT">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="10000" name="DESCRIPCION">
+    <comment>Descripcion de la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="automatica" type="big_decimal">
+   <column name="AUTOMATICA" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idRecoPadre" type="big_decimal">
+   <column name="ID_RECO_PADRE" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="diasSinRespuesta" type="big_decimal">
+   <column name="DIAS_SIN_RESPUESTA" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaAtencionTotal" type="timestamp">
+   <column length="7" name="FECHA_ATENCION_TOTAL">
+    <comment>Fecha desde fue emitida hasta que fue atendida</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaCompromiso" type="timestamp">
+   <column length="7" name="FECHA_COMPROMISO">
+    <comment>Fecha en que se compromete a ser atendida la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaRespuesta" type="timestamp">
+   <column length="7" name="FECHA_RESPUESTA">
+    <comment>Fecha en que se responde la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaRespuestaRevision" type="timestamp">
+   <column length="7" name="FECHA_RESPUESTA_REVISION">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaDeBaja" type="timestamp">
+   <column length="7" name="FECHA_DE_BAJA">
+    <comment>Fecha en que se dio de baja la recomendacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaDeEmision" type="timestamp">
+   <column length="7" name="FECHA_DE_EMISION">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="dependeProveedor" type="string">
+   <column length="1" name="DEPENDE_PROVEEDOR">
+    <comment>S o N</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="codigo" type="string">
+   <column length="15" name="CODIGO" />
+  </property>
+  <property generated="never" lazy="true" name="numero" type="big_decimal">
+   <column name="NUMERO"  precision="22" scale="0"/>
+  </property>
+  <property name="comentario" type="string" lazy="true">
+      <column name="COMENTARIO" length="4000" />
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="ano" type="big_decimal">
+   <column name="ANO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="areaEvaluada" type="string">
+   <column length="20" name="AREA_EVALUADA"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" />
+  </property>
+  <property generated="never" lazy="true" name="opTodos" type="string">
+   <column length="1" name="OP_TODOS" />
+  </property>
+  <property generated="never" lazy="true" name="rc" type="big_decimal">
+   <column name="RC" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idTemp" type="big_decimal">
+   <column name="IDTEMP" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaActualiza" type="timestamp">
+   <column length="7" name="FECHA_ACTUALIZA">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="personaAsignada" type="string">
+   <column length="30" name="PERSONA_ASIGNADA" />
+  </property>
+  <property generated="never" lazy="true" name="codigoProyecto" type="string">
+   <column length="20" name="CODIGO_PROYECTO" />
+  </property>
+  <property generated="never" lazy="true" name="fechaResAud" type="timestamp">
+   <column length="7" name="FECHA_RES_AUD">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="respuestaAuditada" type="string">
+   <column length="1" name="RESPUESTA_AUDITADA" />
+  </property>
+  <property generated="never" lazy="true" name="bandera" type="big_decimal">
+   <column name="BANDERA"  precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="infDefinitivo" type="big_decimal">
+   <column name="INF_DEFINITIVO"  precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="revisionpolitica" type="string">
+   <column length="200" name="revisionpolitica" />
+  </property>
+  <property generated="never" lazy="true" name="codigoetica" type="string">
+   <column length="200" name="codigoetica" />
+  </property>
+ </class>
+</hibernate-mapping>
