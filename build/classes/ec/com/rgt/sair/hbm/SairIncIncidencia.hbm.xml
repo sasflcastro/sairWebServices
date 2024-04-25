@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-nov-2014 9:57:22 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairIncIncidencia" table="SAIR_INC_INCIDENCIA" schema="USRSAIR">
+        <comment>Esquema que soporta la creacion de incidencias, y su relacion con otras incidencias</comment>
+        <id name="idIncidencia" type="big_decimal">
+            <column name="ID_INCIDENCIA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairIncComentario" class="ec.com.rgt.sair.hbm.SairIncComentario" fetch="select" lazy="false">
+            <column name="ID_COMENTARIO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairAreasAdam" class="ec.com.rgt.sair.hbm.SairAreasAdam" fetch="select" lazy="false">
+            <column name="ID_DEPARTAMENTO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="sairIncTipo" class="ec.com.rgt.sair.hbm.SairIncTipo" fetch="select" lazy="false">
+            <column name="ID_TIPO" precision="22" scale="0">
+                <comment>motivo de la creacion de la inciencia</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="sairSubArea" class="ec.com.rgt.sair.hbm.SairSubArea" fetch="select" lazy="false">
+            <column name="ID_SUBAREA" precision="22" scale="0" />
+        </many-to-one>
+        <property name="idGerente" type="string">
+            <column name="ID_GERENTE" length="30" />
+        </property>
+        <property name="detalle" type="string">
+            <column name="DETALLE" length="300">
+                <comment>informacion referente a la incidencia</comment>
+            </column>
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="FECHA_INGRESO" length="7">
+                <comment>fecha de ingreso de la incidencia</comment>
+            </column>
+        </property>
+        <property name="fechaEmision" type="date">
+            <column name="FECHA_EMISION" length="7">
+                <comment>fecha de emision de incidencia</comment>
+            </column>
+        </property>
+        <property name="generado" type="date">
+            <column name="GENERADO" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1">
+                <comment>campo para eliminado logico</comment>
+            </column>
+        </property>
+        <property name="mes" type="big_decimal">
+            <column name="MES" precision="22" scale="0">
+                <comment>mes de ejecucion</comment>
+            </column>
+        </property>
+        <property name="porcentaje" type="string">
+            <column name="PORCENTAJE" length="5" />
+        </property>
+        <property name="cerrada" type="big_decimal">
+            <column name="CERRADA" precision="22" scale="0">
+            </column>
+        </property>
+        <property name="anterior" type="big_decimal">
+            <column name="ANTERIOR" precision="22" scale="0">
+            </column>
+        </property>
+        <property name="dentroTiempo" type="big_decimal">
+            <column name="DENTRO_TIEMPO" precision="22" scale="0">
+            </column>
+        </property>
+        <property name="noAtendida" type="big_decimal">
+            <column name="NO_ATENDIDA" precision="22" scale="0">
+            </column>
+        </property>
+        <property name="fueraTiempo" type="big_decimal">
+            <column name="FUERA_TIEMPO" precision="22" scale="0">
+            </column>
+        </property>
+      </class>
+</hibernate-mapping>

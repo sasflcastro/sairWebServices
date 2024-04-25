@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocEscalamientoDocument"
+  schema="USRSAIR" table="SAIR_DOC_ESCALAMIENTO_DOCUMENT">
+  <comment>Almacenar los escalamientos que se realizan por documento</comment>
+  <id name="idEscalamientoDocumento" type="big_decimal">
+   <column name="ID_ESCALAMIENTO_DOCUMENTO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo"
+   fetch="select" lazy="false" name="sairDocReservacionCodigo"  >
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" not-null="true"
+    precision="22" scale="0">
+    <comment>Codigo secuencial de la tabla SAIR_Reservacion_Codigo</comment>
+   </column>
+  </many-to-one>
+  <many-to-one name="sairRecRecomendacion" class="ec.com.rgt.sair.hbm.SairRecRecomendacion" fetch="select" lazy="false">
+      <column name="ID_RECOMENDACION" precision="22" scale="0" />
+  </many-to-one>
+  <property generated="never" lazy="true" name="idUsuarioAic" type="string">
+   <column length="30" name="ID_USUARIO_AIC" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="idUsuarioAnterior" type="string">
+   <column length="30" name="ID_USUARIO_ANTERIOR" not-null="true">
+    <comment>Codigo del usuario que tenia asignado el documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaEscalamiento" type="timestamp">
+   <column length="7" name="FECHA_ESCALAMIENTO" not-null="true">
+    <comment>Fecha en que se realizo el escalamiento para el documento</comment>
+   </column>
+  </property>
+  <property name="estado" type="string">
+      <column name="ESTADO" length="1" />
+  </property>
+  <property name="tipoUsuario" type="string">
+   <column length="1" name="TIPO_USUARIO" >
+    <comment>A USUARIO AUDITOR B USUARIO AUDITADO</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

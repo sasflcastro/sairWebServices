@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairObsAccionAdm" schema="USRSAIR" table="SAIR_OBS_ACCION_ADM">
+  <comment>Ingresar d acuerdo a las existentes: V VERBAL E ESCRITO CON DESCTO C ESCRITO SIN DESCTO D DESPIDO A CAPACITACION I INCIDENCIA J JUSTIFICADO N NINGUNO</comment>
+  <id name="idAccionAdm" type="big_decimal">
+   <column name="ID_ACCION_ADM" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="4000" name="DESCRIPCION" not-null="true">
+    <comment>detalle funcional del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="codigo" type="string">
+   <column length="2" name="CODIGO">
+    <comment>TMP</comment>
+   </column>
+  </property>
+  <property name="estado" type="string">
+     <column name="ESTADO" length="1">
+   <comment>Eliminacion logica</comment>
+     </column>
+  </property>
+ </class>
+</hibernate-mapping>

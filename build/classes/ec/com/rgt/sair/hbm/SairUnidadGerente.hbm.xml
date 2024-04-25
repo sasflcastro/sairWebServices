@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="ec.com.rgt.sair.hbm.SairUnidadGerente" schema="USRSAIR" table="SAIR_UNIDAD_GERENTE">
+  <id name="idUnidadGerente" type="big_decimal">
+   <column name="ID_UNIDAD_GERENTE" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="idSubArea" type="big_decimal">
+   <column name="ID_SUB_AREA" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="usuario" type="string">
+   <column length="30" name="USUARIO" />
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-feb-2014 14:57:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocArnp" schema="USRSAIR" table="SAIR_DOC_ARNP">
+  <id name="idArnp" type="big_decimal">
+   <column name="ID_ARNP" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" name="sairDocReservacionCodigo" update="true" insert="true" lazy="false">
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadoComplementario" fetch="select" name="sairEstadoComplementario" update="true" insert="true" lazy="false">
+   <column name="ID_ESTADO_COMP" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairArea" fetch="select" name="sairArea" update="true" insert="true" >
+   <column name="ID_AREA" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadosPrincipal" fetch="select" name="sairEstadosPrincipal" update="true" insert="true" lazy="false">
+   <column name="ID_ESTADO" precision="22" scale="0"/>
+  </many-to-one>
+  <property generated="never" lazy="true" name="asunto" type="string">
+   <column length="4000" name="ASUNTO"/>
+  </property>
+  <property generated="never" lazy="true" name="codArnp" type="big_decimal">
+   <column name="COD_ARNP" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaEmision" type="timestamp">
+   <column length="7" name="FECHA_EMISION"/>
+  </property>
+  <property generated="never" lazy="true" name="cantReco" type="big_decimal">
+   <column name="CANT_RECO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="20" name="USUARIO_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO"/>
+  </property>
+  <property generated="never" lazy="true" name="alcance" type="string">
+   <column name="ALCANCE"/>
+  </property>
+  <property generated="never" lazy="true" name="antecedentes" type="string">
+   <column name="ANTECEDENTES"/>
+  </property>
+  <property generated="never" lazy="true" name="revisadoSupervisor" type="string">
+   <column length="1" name="REVISADO_SUPERVISOR"/>
+  </property>
+  <property generated="never" lazy="true" name="revisadoJefe" type="string">
+   <column length="1" name="REVISADO_JEFE"/>
+  </property>
+  <property generated="never" lazy="true" name="comentario" type="string">
+   <column length="200" name="COMENTARIO">
+    <comment>Comentario ingresado por el usuario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaEmisionReal" type="timestamp">
+   <column length="7" name="FECHA_EMISION_REAL"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocConclusionDocumento"
+  schema="USRSAIR" table="SAIR_DOC_CONCLUSION_DOCUMENTO">
+  <comment>Almacenar cada uno de las conclusiones que puede asignarseles a un documento</comment>
+  <id name="idConclusionDocumento" type="big_decimal">
+   <column name="ID_CONCLUSION_DOCUMENTO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" name="sairDocReservacionCodigo" update="true" insert="true" lazy="false">
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" not-null="true"
+    precision="22" scale="0">
+    <comment>Codigo secuencial de la tabla SAIR_Reservacion_Codigo</comment>
+   </column>
+  </many-to-one>
+  <many-to-one name="sairDocImpacto" class="ec.com.rgt.sair.hbm.SairDocImpacto" fetch="select" lazy="false">
+      <column name="ID_IMPACTO" precision="22" scale="0">
+          <comment>Impacto economico</comment>
+      </column>
+  </many-to-one>
+  <many-to-one name="sairDocPrioridad" class="ec.com.rgt.sair.hbm.SairDocPrioridad" fetch="select" lazy="false">
+      <column name="ID_PRIORIDAD" precision="22" scale="0">
+          <comment>Secuencial de Tabla</comment>
+      </column>
+  </many-to-one>
+  <property name="usuarioIngreso" type="string">
+      <column name="USUARIO_INGRESO" length="30" />
+  </property>
+  <property generated="never" lazy="true" name="textoComentario" type="string">
+   <column name="TEXTO_COMENTARIO">
+    <comment>Detalle del comentario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="calificacion" type="big_decimal">
+   <column name="CALIFICACION" precision="22" scale="0">
+    <comment>calificacion</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="prioridad" type="string">
+   <column name="PRIORIDAD" length="10">
+    <comment>Prioridad</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column name="ESTADO" length="1">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO">
+    <comment>Fecha de ingreso del comentario</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idComentarioPadre" type="big_decimal">
+   <column name="ID_COMENTARIO_PADRE" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="rc" type="big_decimal">
+   <column name="RC" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idTemp" type="big_decimal">
+   <column name="IDTEMP" precision="22" scale="0">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaActualiza" type="timestamp">
+		   <column length="7" name="FECHA_ACTUALIZA">
+		   </column>
+		</property>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoHallazgo" fetch="select" name="sairDocTipoHallazgo" update="true" insert="true" lazy="false">
+   	<column name="ID_TIPO_HALLAZGO" precision="22" scale="0">
+   		<comment>Codigo de la tabla SAIR_DOC_TIPO_HALLAZGO</comment>
+   	</column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoEvento" fetch="select" name="sairDocTipoEvento" update="true" insert="true" lazy="false">
+  	<column name="ID_TIPO_EVENTO" precision="22" scale="0">
+   		<comment>Codigo de la tabla SAIR_DOC_TIPO_EVENTO</comment>
+   	</column>
+  </many-to-one>  
+  <property generated="never" lazy="true" name="eventoAfectado" type="big_decimal">
+  	<column name="EVENTO_AFECTADO" precision="22" scale="0">
+   	</column>
+  </property>
+  <property generated="never" lazy="true" name="tipoImpacto" type="string">
+   <column name="TIPO_IMPACTO" length="10">
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="valorDetectado" type="big_decimal">
+  	<column name="VALOR_DETECTADO" precision="22" scale="0">
+   	</column>
+  </property>
+  <property generated="never" lazy="true" name="valorADevolver" type="big_decimal">
+  	<column name="VALOR_A_DEVOLVER" precision="22" scale="0">
+   	</column>
+  </property>
+ </class>
+</hibernate-mapping>

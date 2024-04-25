@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-abr-2015 16:20:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairCalEventos" table="SAIR_CAL_EVENTOS" schema="USRSAIR">
+        <comment>Tabla que registra los eventos a agendar por usuario y modulo.</comment>
+        <id name="idEvento" type="big_decimal">
+            <column name="ID_EVENTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairCalTipoEvento" class="ec.com.rgt.sair.hbm.SairCalTipoEvento" fetch="select" update="true" insert="true" lazy="false">
+            <column name="ID_TIPO_EVENTO" precision="22" scale="0" not-null="true">
+                <comment>permite identificar el tipo de evento registrado</comment>
+            </column>
+        </many-to-one>
+        <property name="idObjeto" type="big_decimal">
+            <column name="ID_OBJETO" precision="22" scale="0" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="FECHA_INICIO" length="7">
+                <comment>fecha y hora en que comienza el evento</comment>
+            </column>
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="FECHA_FIN" length="7">
+                <comment>fecha y hora en que finaliza el evento</comment>
+            </column>
+        </property>
+        <property name="titulo" type="string">
+            <column name="TITULO" length="200" not-null="true">
+                <comment>texto que aparece en el encabezado del evento</comment>
+            </column>
+        </property>
+        <property name="contenido" type="string">
+            <column name="CONTENIDO" length="200">
+                <comment>texto que aparece en la decripcion del evento</comment>
+            </column>
+        </property>
+        <property name="bloqueado" type="big_decimal">
+            <column name="BLOQUEADO" precision="22" scale="0" not-null="true">
+                <comment>indica si se podran modificar las fechas de inicio y/o fin de un evento usando un evento drag en el calendario. Habilitado (1) deshabilitado (0)</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

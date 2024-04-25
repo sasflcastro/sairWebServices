@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/01/2017 15:02:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairActaComentario" table="SAIR_ACTA_COMENTARIO" schema="USRSAIR">
+        <id name="idComentario" type="big_decimal">
+            <column name="ID_COMENTARIO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairActaProyecto" class="ec.com.rgt.sair.hbm.SairActaProyecto" fetch="select" lazy="false">
+            <column name="ID_PROYECTO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="30" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="url" type="string">
+            <column name="URL" length="100" />
+        </property>
+        <property name="ext" type="string">
+            <column name="EXT" length="10" />
+        </property>
+        <property name="comentario" type="string">
+            <column name="COMENTARIO" />
+        </property>
+    </class>
+</hibernate-mapping>

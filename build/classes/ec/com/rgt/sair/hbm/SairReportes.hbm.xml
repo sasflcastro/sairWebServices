@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="ec.com.rgt.sair.hbm.SairReportes" schema="USRSAIR" table="SAIR_REPORTES">
+  <id name="idReporte" type="big_decimal">
+   <column name="ID_REPORTE" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="nombre" type="string">
+   <column length="50" name="NOMBRE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="200" name="DESCRIPCION" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="idUsuario" type="string">
+   <column length="30" name="ID_USUARIO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="url" type="string">
+   <column length="200" name="URL"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="tipo" type="string">
+   <column length="10" name="TIPO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-jul-2013 0:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="ec.com.rgt.sair.hbm.ActaAvance" schema="USRSAIR" table="SAIR_ACTA_AVANCE">
+  <id name="idAvance" type="big_decimal">
+   <column name="ID_VANCE" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="idProyecto" type="string">
+   <column length="100" name="ID_PROYECTO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngresComentario" type="timestamp">
+   <column length="30" name="fecha_Ingres_Comentario" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngresoComentario" type="string">
+   <column length="7" name="USUARIO_INGRESO_COMENTARIO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="porcentaje" type="string">
+   <column length="30" name="PORCENTAJE"/>
+  </property>
+ 
+ </class>
+</hibernate-mapping>

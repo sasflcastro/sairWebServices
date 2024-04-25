@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocAnexoDocumento"
+  schema="USRSAIR" table="SAIR_DOC_ANEXO_DOCUMENTO">
+  <comment>Tabla para almacenar los diferentes anexos que se pueden realizar a un documento</comment>
+  <id name="idAnexoDocumento" type="big_decimal">
+   <column name="ID_ANEXO_DOCUMENTO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocReservacionCodigo" fetch="select" name="sairDocReservacionCodigo" update="true" insert="true" lazy="false">
+   <column name="ID_SECUENCIA_RESERVA_CODIGO" not-null="true"
+    precision="22" scale="0">
+    <comment>Codigo secuencial de la tabla SAIR_Reservacion_Codigo</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairEstadosPrincipal" fetch="select" name="sairEstadosPrincipal" update="false" insert="false" >
+   <column name="ID_ESTADO" not-null="true" precision="22" scale="0">
+    <comment>Secuencial de Tabla</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="1000" name="DESCRIPCION" >
+    <comment>Descripcion del anexo que se realiza</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="documentoAnexado" type="string">
+   <column name="DOCUMENTO_ANEXADO" >
+    <comment>Documento fisico asociado al Informe, Memorando o RC</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO" not-null="true">
+    <comment>Fecha de ingreso del anexo</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaActualizacion" type="timestamp">
+   <column length="7" name="FECHA_ACTUALIZACION" >
+    <comment>Fecha de actualizacion de registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="idEstadoComp" type="big_decimal">
+   <column name="ID_ESTADO_COMP"  precision="22" scale="0"/>
+  </property>
+  <property name="rutaCompartida" type="string">
+     <column name="RUTA_COMPARTIDA" length="1000" />
+  </property>
+  <property name="extension" type="string">
+      <column name="EXTENSION" length="20">
+          <comment>Extencion del archivo</comment>
+      </column>
+  </property>
+ </class>
+</hibernate-mapping>

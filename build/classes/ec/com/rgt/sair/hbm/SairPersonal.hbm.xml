@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairPersonal" schema="USRSAIR" table="SAIR_PERSONAL">
+  <composite-id class="ec.com.rgt.sair.hbm.SairPersonalId"
+   mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="perId" type="big_decimal">
+    <column name="PER_ID" precision="22" scale="0"/>
+   </key-property>
+   <key-property name="areaId" type="big_decimal">
+    <column name="AREA_ID" precision="22" scale="0"/>
+   </key-property>
+  </composite-id>
+  <property generated="never" lazy="true" name="perNombre" type="string">
+   <column length="50" name="PER_NOMBRE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="perCargo" type="string">
+   <column length="100" name="PER_CARGO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="perEstado" type="string">
+   <column length="1" name="PER_ESTADO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="perCorreo" type="string">
+   <column length="100" name="PER_CORREO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

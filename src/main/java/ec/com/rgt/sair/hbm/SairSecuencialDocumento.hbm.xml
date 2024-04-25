@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairSecuencialDocumento"
+  schema="USRSAIR" table="SAIR_SECUENCIAL_DOCUMENTO">
+  <comment>Almacenar el secuencial que manejara cada tipo de documento, el cual aumentara cada vez que se genere un tipo de documento</comment>
+  <composite-id class="ec.com.rgt.sair.hbm.SairSecuencialDocumentoId"
+   mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="idSecuencialDocumento" type="big_decimal">
+    <column name="ID_SECUENCIAL_DOCUMENTO" precision="22" scale="0"/>
+   </key-property>
+   <key-property name="idTipoDocumento" type="big_decimal">
+    <column name="ID_TIPO_DOCUMENTO" precision="22" scale="0"/>
+   </key-property>
+   <key-property name="idSubArea" type="big_decimal">
+    <column name="ID_SUB_AREA" precision="22" scale="0"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoDocumento"
+   fetch="select" insert="false" name="sairDocTipoDocumento" update="false" >
+   <column name="ID_TIPO_DOCUMENTO" not-null="true" precision="22" scale="0">
+    <comment>Codigo del tipo de documento</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairArea" fetch="select"
+   insert="false" name="sairArea" update="false" >
+   <column name="ID_SUB_AREA" not-null="true" precision="22" scale="0">
+    <comment>Codigo de la SubArea</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="100" name="DESCRIPCION" not-null="true">
+    <comment>Descripcion del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="secuencia" type="big_decimal">
+   <column name="SECUENCIA" not-null="true" precision="22" scale="0">
+    <comment>Ultimo registro generado</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO" not-null="true">
+    <comment>Estado del registro</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

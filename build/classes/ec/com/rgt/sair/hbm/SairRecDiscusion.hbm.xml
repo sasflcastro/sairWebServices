@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-abr-2014 14:30:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairRecDiscusion" table="SAIR_REC_DISCUSION" schema="USRSAIR">
+        <id name="idDiscusion" type="big_decimal">
+            <column name="ID_DISCUSION" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sairRecRecomendacion" class="ec.com.rgt.sair.hbm.SairRecRecomendacion" fetch="select" lazy="false">
+            <column name="ID_RECOMENDACION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="idUsuario" type="string">
+            <column name="ID_USUARIO" length="30" />
+        </property>
+        <property name="idUsuarioDir" type="string">
+            <column name="ID_USUARIO_DIR" length="30" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="leido" type="string">
+            <column name="LEIDO" length="1" />
+        </property>
+        <property name="discusion" type="string">
+            <column name="DISCUSION" length="1000" />
+        </property>
+        <property name="url" type="string">
+            <column name="URL" length="1000" />
+        </property>
+        <property name="extencion" type="string">
+            <column name="EXTENCION" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

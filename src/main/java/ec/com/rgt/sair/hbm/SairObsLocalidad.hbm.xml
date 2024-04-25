@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ago-2014 16:16:11 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairObsLocalidad" table="SAIR_OBS_LOCALIDAD" schema="USRSAIR">
+        <id name="idLocalidad" type="string">
+            <column name="ID_LOCALIDAD" length="20"  />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="200" />
+        </property>
+        <property name="jefe" type="string">
+            <column name="JEFE" length="30" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="nombreReal" type="string">
+            <column name="NOMBRE_REAL" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

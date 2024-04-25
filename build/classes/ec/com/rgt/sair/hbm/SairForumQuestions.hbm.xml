@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-ago-2015 9:51:42 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping default-lazy="true">
+    <class name="ec.com.rgt.sair.hbm.SairForumQuestions" table="SAIR_FORUM_QUESTIONS" schema="USRSAIR">
+        <id name="idQuestion" type="big_decimal">
+            <column name="ID_QUESTION" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuarios" class="ec.com.rgt.sair.hbm.Usuarios" fetch="select" lazy="false">
+            <column name="ID_USUARIO" length="30" />
+        </many-to-one>
+        <many-to-one name="sairForumTag" class="ec.com.rgt.sair.hbm.SairForumTag" fetch="select" lazy="false">
+            <column name="ID_TAG" precision="22" scale="0" />
+        </many-to-one>
+        <property name="pregunta" type="string">
+            <column name="PREGUNTA" length="200" />
+        </property>
+        <property name="detalle" type="string">
+            <column name="DETALLE" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="voto" type="big_decimal">
+            <column name="VOTO" precision="22" scale="0" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairTiempoAtencionDocumento"
+  schema="USRSAIR" table="SAIR_TIEMPO_ATENCION_DOCUMENTO">
+  <comment>Mantener registro sobre el tiempo maximo de revision que debe tener un tipo de documento</comment>
+  <id name="idTiempoAtencion" type="big_decimal">
+   <column name="ID_TIEMPO_ATENCION" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoInforme"
+   fetch="select" name="sairDocTipoInforme" update="false" insert="false" >
+   <column name="ID_TIPO_INFORME" not-null="true" precision="22" scale="0">
+    <comment>Codigo del tipo de informe</comment>
+   </column>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairDocTipoDocumento"
+   fetch="select" name="sairDocTipoDocumento" update="false" insert="false" >
+   <column name="ID_TIPO_DOCUMENTO" not-null="true" precision="22" scale="0">
+    <comment>Codigo del tipo de documento</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="30" name="USUARIO_INGRESO" not-null="true">
+    <comment>Usuario que realizo el registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO" not-null="true">
+    <comment>Fecha de ingreso del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaActualizacion" type="timestamp">
+   <column length="7" name="FECHA_ACTUALIZACION" not-null="true">
+    <comment>Fecha de actualizacion del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="dias" type="big_decimal">
+   <column name="DIAS" not-null="true" precision="22" scale="0">
+    <comment>numero de dias para la revision del documento</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

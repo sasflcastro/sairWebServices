@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairParProcedimientoAmx"
+  schema="USRSAIR" table="SAIR_PAR_PROCEDIMIENTO_AMX">
+  <id name="idProcedimientoAmx" type="big_decimal">
+   <column name="ID_PROCEDIMIENTO_AMX" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" name="sairParRutina" update="false" insert="false" lazy="false">
+   <column name="ID_RUTINA" not-null="true" precision="22" scale="0"/>
+  </many-to-one>
+  <property generated="never" lazy="true" name="iprocedimiento" type="string">
+   <column length="100" name="IPROCEDIMIENTO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

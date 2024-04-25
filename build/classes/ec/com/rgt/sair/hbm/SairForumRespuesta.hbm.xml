@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-ago-2015 9:51:42 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairForumRespuesta" table="SAIR_FORUM_RESPUESTA" schema="USRSAIR">
+        <id name="idRespuesta" type="big_decimal">
+            <column name="ID_RESPUESTA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuarios" class="ec.com.rgt.sair.hbm.Usuarios" fetch="select" lazy="false">
+            <column name="ID_USUARIO" length="30" />
+        </many-to-one>
+        <many-to-one name="sairForumQuestions" class="ec.com.rgt.sair.hbm.SairForumQuestions" fetch="select" lazy="false">
+            <column name="ID_QUESTION" precision="22" scale="0" />
+        </many-to-one>
+        <property name="respuesta" type="string">
+            <column name="RESPUESTA" />
+        </property>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="FECHA_INGRESO" length="7" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <property name="correcta" type="big_decimal">
+            <column name="CORRECTA" precision="22" scale="0">
+                <comment>1 ES CORRECTA 0 NO ES CORRECTA</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

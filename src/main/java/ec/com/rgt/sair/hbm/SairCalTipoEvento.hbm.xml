@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-abr-2015 16:20:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairCalTipoEvento" table="SAIR_CAL_TIPO_EVENTO" schema="USRSAIR">
+        <comment>Tabla que permite configurar los diferentes tipos de eventos que exestiran en el calendario. F: feriado P: permiso T: tarea R: reunion V: vacaciones</comment>
+        <id name="idTipoEvento" type="big_decimal">
+            <column name="ID_TIPO_EVENTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true">
+                <comment>nombre del tipo de evento</comment>
+            </column>
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="256" not-null="true">
+                <comment>detalle acerca del tipo de evento</comment>
+            </column>
+        </property>
+        <property name="colorCabecera" type="string">
+            <column name="COLOR_CABECERA" length="10">
+                <comment>color que aparecera en la cabecera de cada tipo de evento</comment>
+            </column>
+        </property>
+        <property name="colorContenido" type="string">
+            <column name="COLOR_CONTENIDO" length="10">
+                <comment>color que aparecera en el panel de contenido del evento</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

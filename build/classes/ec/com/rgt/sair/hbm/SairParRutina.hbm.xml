@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairParRutina" schema="USRSAIR" table="SAIR_PAR_RUTINA">
+  <id name="idRutina" type="big_decimal">
+   <column name="ID_RUTINA" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParComentarioRutina"
+   fetch="select" lazy="false" name="sairParComentarioRutina">
+   <column name="ID_COMENTARIO" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairTipoPlan" fetch="select"
+   lazy="false" name="sairTipoPlan">
+   <column name="ID_TIPO_PLAN" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParDeficiencia"
+   fetch="select" lazy="false" name="sairParDeficiencia">
+   <column name="ID_DEFICIENCIA" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairPoliticaProcedimiento"
+   fetch="select" lazy="false" name="sairPoliticaProcedimiento">
+   <column name="ID_PROCESO" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairArea" fetch="select"
+   lazy="false" name="sairArea">
+   <column name="ID_AREA" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairFrecuencia" fetch="select"
+   lazy="false" name="sairFrecuencia">
+   <column name="ID_FRECUENCIA" precision="22" scale="0"/>
+  </many-to-one>
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParPeriodicidad" fetch="select"
+   lazy="false" name="sairPeriocidad">
+   <column name="ID_PERIODICIDAD" precision="22" scale="0"/>
+  </many-to-one>
+  <property generated="never" lazy="true" name="idResponsable" type="string">
+   <column length="30" name="ID_RESPONSABLE"/>
+  </property>
+  <property generated="never" lazy="true" name="idejecutor" type="string">
+   <column length="30" name="ID_EJECUTOR"/>
+  </property>
+  <property generated="never" lazy="true" name="AreaEvaluada" type="string">
+   <column length="4000" name="AREA_EVALUADA"/>
+  </property>
+  <property generated="never" lazy="true" name="nombre" type="string">
+   <column length="4000" name="NOMBRE"/>
+  </property>
+  <property generated="never" lazy="true" name="procesosAmx" type="string">
+   <column length="150" name="PROCESOS_AMX"/>
+  </property>
+  <property generated="never" lazy="true" name="mesInicio" type="big_decimal">
+   <column name="MES_INICIO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="anio" type="big_decimal">
+   <column name="ANIO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="amx" type="string">
+   <column length="2" name="AMX"/>
+  </property>
+  <property generated="never" lazy="true" name="suspend" type="string">
+   <column length="2" name="SUSPEND"/>
+  </property>
+  <property generated="never" lazy="true" name="entregaPropuesta" type="string">
+   <column length="2" name="ENTREGA_PROPUESTA"/>
+  </property>
+  <property generated="never" lazy="true" name="codigoRutina" type="string">
+   <column length="25" name="CODIGO_RUTINA"/>
+  </property>
+  <property generated="never" lazy="true" name="tiempoLogistica" type="big_decimal">
+   <column name="TIEMPO_LOGISTICA" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="tiempoAnalisis" type="big_decimal">
+   <column name="TIEMPO_ANALISIS" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="tiempoDepuracion" type="big_decimal">
+   <column name="TIEMPO_DEPURACION" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="tiempoSeguimiento" type="big_decimal">
+   <column name="TIEMPO_SEGUIMIENTO" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="url" type="string">
+   <column length="1000" name="URL"/>
+  </property>
+  <property generated="never" lazy="true" name="codigo" type="big_decimal">
+   <column name="CODIGO" precision="22" scale="0">
+    <comment>CODIGO TEMPORAL PARA PODER RELACIONAR LAS RUTINAS mod</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="rutId" type="big_decimal">
+   <column name="RUT_ID" precision="22" scale="0">
+    <comment>tmp par</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO"/>
+  </property>
+  <property generated="never" lazy="true" name="revision" type="string">
+   <column length="1" name="REVISION"/>
+  </property>
+  <property generated="never" lazy="true" name="revision2" type="string">
+   <!-- column length="1" name="REVISION2"/-->
+   <column length="1" name="ID_ASIGNADO"/>
+  </property>
+  <property generated="never" lazy="true" name="tipoRutina" type="string">
+            <column name="TIPO_RUTINA" length="20" />
+  </property>
+  <property generated="never" lazy="true" name="semana1" type="big_decimal">
+   <column name="SEMANA1" precision="22" scale="0"/>
+  </property>
+   <property generated="never" lazy="true" name="semana2" type="big_decimal">
+   <column name="SEMANA2" precision="22" scale="0"/>
+  </property>
+   <property generated="never" lazy="true" name="semana3" type="big_decimal">
+   <column name="SEMANA3" precision="22" scale="0"/>
+  </property>
+   <property generated="never" lazy="true" name="semana4" type="big_decimal">
+   <column name="SEMANA4" precision="22" scale="0"/>
+  </property>
+   <property generated="never" lazy="true" name="semanaEmitirse" type="big_decimal">
+   <column name="SEMANA_EMITIRSE" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="codigoetica" type="string">
+   <column length="200" name="codigoetica"/>
+  </property>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/08/2018 14:36:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairMgDetalleProcesos" table="SAIR_MG_DETALLE_PROCESOS" schema="USRSAIR">
+        <id name="id" type="big_decimal">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>        
+        <property name="idSubSegmento" type="big_decimal">
+            <column name="ID_SUB_SEGMENTO" precision="22" scale="0" />
+        </property>
+        <many-to-one class="ec.com.rgt.sair.hbm.SairMgTableroProcesos" fetch="select" name="sairMgTableroProcesos" update="true" insert="true" lazy="false">
+		   	<column name="ID_TAB_PROCESO" precision="22" scale="0">
+		   		<comment>Codigo de la tabla SAIR_MG_TABLERO_PROCESOS</comment>
+		   	</column>
+		</many-to-one>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

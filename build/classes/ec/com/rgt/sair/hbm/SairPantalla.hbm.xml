@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-jul-2014 10:33:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairPantalla" table="SAIR_PANTALLA" schema="USRSAIR" >
+        <id name="idPantalla" type="big_decimal">
+            <column name="ID_PANTALLA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="src" type="string">
+            <column name="SRC" length="100" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" not-null="true" />
+        </property>
+        <property name="permiso" type="string">
+            <column name="PERMISO" length="1" not-null="true" />
+        </property>
+        <property name="idAplicacion" type="big_decimal">
+            <column name="ID_APLICACION" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

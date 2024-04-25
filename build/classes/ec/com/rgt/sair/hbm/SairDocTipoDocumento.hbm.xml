@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2013 14:03:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-access="field">
+ <class name="ec.com.rgt.sair.hbm.SairDocTipoDocumento" schema="USRSAIR" table="SAIR_DOC_TIPO_DOCUMENTO">
+  <comment>Almacenar los tipos de documento que se pueden generar - Informes - RC - Memo</comment>
+  <id name="idTipoDocumento" type="big_decimal">
+   <column name="ID_TIPO_DOCUMENTO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="descripcion" type="string">
+   <column length="1000" name="DESCRIPCION" not-null="true">
+    <comment>Nombre del tipo de documento</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO" not-null="true">
+    <comment>Fecha de ingreso del registro</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO">
+    <comment>estado</comment>
+   </column>
+  </property>
+  <property   name="prioridad" type="string">
+  	<column name="PRIORIDAD" length="30"></column>
+  </property>
+ </class>
+</hibernate-mapping>

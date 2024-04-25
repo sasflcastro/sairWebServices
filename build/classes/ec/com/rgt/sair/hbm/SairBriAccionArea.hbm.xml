@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/12/2016 12:38:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairBriAccionArea" table="SAIR_BRI_ACCION_AREA" schema="USRSAIR">
+        <composite-id name="id" class="ec.com.rgt.sair.hbm.SairBriAccionAreaId">
+            <key-property name="idAccion" type="big_decimal">
+                <column name="ID_ACCION" precision="22" scale="0" />
+            </key-property>
+            <key-property name="idDepartamento" type="big_decimal">
+                <column name="ID_DEPARTAMENTO" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="sairAreasAdam" class="ec.com.rgt.sair.hbm.SairAreasAdam" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_DEPARTAMENTO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sairBriAcciones" class="ec.com.rgt.sair.hbm.SairBriAcciones" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ID_ACCION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-oct-2013 13:40:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairFormato" schema="USRSAIR" table="SAIR_FORMATO">
+  <id name="idFormato" type="big_decimal">
+   <column name="ID_FORMATO" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="true" name="tabla" type="string">
+   <column length="40" name="TABLA" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="campos" type="string">
+   <column length="40" name="CAMPOS" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="orden" type="big_decimal">
+   <column name="ORDEN" not-null="true" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="2" name="ESTADO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="true" name="obligatorio" type="string">
+   <column length="2" name="OBLIGATORIO" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

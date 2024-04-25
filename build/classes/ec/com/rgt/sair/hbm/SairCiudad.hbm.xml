@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ago-2014 14:43:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+    <class name="ec.com.rgt.sair.hbm.SairCiudad" table="SAIR_CIUDAD" schema="USRSAIR">
+        <id name="idCiudad" type="big_decimal">
+            <column name="ID_CIUDAD" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="PROVINCIA" length="50" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="CODIGO" length="10" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

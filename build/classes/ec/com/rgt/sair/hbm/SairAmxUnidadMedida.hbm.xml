@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-ene-2015 15:36:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairAmxUnidadMedida" table="SAIR_AMX_UNIDAD_MEDIDA" schema="USRSAIR">
+        <id name="idSairAmxUnidadMedida" type="big_decimal">
+            <column name="ID_SAIR_AMX_UNIDAD_MEDIDA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="4000" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <many-to-one name="sairAmxUnidMedMacro" class="ec.com.rgt.sair.hbm.SairAmxUnidMedMacro" fetch="select" lazy="false">
+            <column name="ID_SAIR_AMX_UNID_MED_MACRO" precision="22" scale="0" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

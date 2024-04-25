@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/12/2016 12:38:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.SairBriRiesgo" table="SAIR_BRI_RIESGO" schema="USRSAIR">
+        <id name="idRiesgo" type="big_decimal">
+            <column name="ID_RIESGO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" />
+        </property>
+        <property name="estado" type="string">
+            <column name="ESTADO" length="1" />
+        </property>
+        <set name="sairBriBriefs" table="SAIR_BRI_BRIEF" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_RIESGO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="ec.com.rgt.sair.hbm.SairBriBrief" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-ene-2014 11:48:25 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-lazy="true">
+ <class name="ec.com.rgt.sair.hbm.SairDocPlantilla" schema="USRSAIR" table="SAIR_DOC_PLANTILLA">
+  <id name="idPlantilla" type="big_decimal">
+   <column name="ID_PLANTILLA" precision="22" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <!-- many-to-one class="ec.com.rgt.sair.hbm.SairDocPlantilla"
+   fetch="select" name="sairDocPlantilla">
+   <column name="ID_PLANTILLA_HIJO" precision="22" scale="0"/>
+  </many-to-one-->
+  <property name="idPlantillaHijo" type="big_decimal">
+            <column name="ID_PLANTILLA_HIJO" precision="22" scale="0" />
+        </property>
+  <property generated="never" lazy="true" name="nombre" type="string">
+   <column length="30" name="NOMBRE"/>
+  </property>
+  <property generated="never" lazy="true" name="plantilla" type="string">
+   <column length="2000" name="PLANTILLA"/>
+  </property>
+  <property generated="never" lazy="true" name="fechaIngreso" type="timestamp">
+   <column length="7" name="FECHA_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="usuarioIngreso" type="string">
+   <column length="20" name="USUARIO_INGRESO"/>
+  </property>
+  <property generated="never" lazy="true" name="estado" type="string">
+   <column length="1" name="ESTADO"/>
+  </property>  
+  <many-to-one class="ec.com.rgt.sair.hbm.SairParRutina" fetch="select" name="sairParRutina" update="true" insert="true" lazy="false">
+   <column name="ID_RUTINA"  precision="22" scale="0"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

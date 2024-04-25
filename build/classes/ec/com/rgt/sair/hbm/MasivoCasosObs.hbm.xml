@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/02/2019 11:58:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="ec.com.rgt.sair.hbm.MasivoCasosObs" table="MASIVA_CASOS_OBS" schema="USRSAIR">
+        <id name="idObservacion" type="string">
+            <column name="ID_OBSERVACION" length="200" />
+        </id>
+        <property name="idArea" type="string">
+            <column name="ID_AREA" length="200" />
+        </property>
+        <property name="idUsuarioAic" type="string">
+        	<column name="ID_USUARIO_AIC" length="200" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="OBSERVACION" length="200" />
+        </property>
+        <property name="idOperador" type="string">
+            <column name="ID_OPERADOR" length="200" />
+        </property>
+        <property name="idDepartamento" type="string">
+            <column name="ID_DEPARTAMENTO" length="200" />
+        </property>
+        <property name="idSubArea" type="string">
+            <column name="ID_SUB_AREA" length="200" />
+        </property>
+        <property name="idCiudad" type="string">
+            <column name="ID_CIUDAD" length="200" />
+        </property>
+        <property name="mesPeriodo" type="string">
+            <column name="MES_PERIODO" length="200" />
+        </property>
+        <property name="cuenta" type="string">
+            <column name="CUENTA" length="200" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="200" />
+        </property>
+        <property name="valor" type="string">
+            <column name="VALOR" length="200" />
+        </property>
+        <property name="codIncidencia" type="string">
+            <column name="COD_INCIDENCIA" length="200" />
+        </property>
+        <property name="idTipo" type="string">
+            <column name="ID_TIPO" length="200" />
+        </property>
+        <property name="fechaRespAud" type="string">
+            <column name="FECHA_RESP_AUD" length="200" />
+        </property>
+        <property name="idComentario" type="string">
+            <column name="ID_COMENTARIO" length="200" />
+        </property>
+        <property name="idTipoFalta" type="string">
+            <column name="ID_TIPO_FALTA" length="200" />
+        </property>
+        <property name="idDetalleFaltas" type="string">
+            <column name="ID_DETALLE_FALTAS" length="200" />
+        </property>
+        <property name="idSecuenciaReservaCodigo" type="string">
+            <column name="ID_SECUENCIA_RESERVA_CODIGO" length="200" />
+        </property>
+        <property name="anio" type="string">
+            <column name="ANIO" length="200" />
+        </property>
+        <property name="idLocalidad" type="string">
+            <column name="ID_LOCALIDAD" length="200" />
+        </property>
+        <property name="idRecomendacion" type="string">
+            <column name="ID_RECOMENDACION" length="200" />
+        </property>
+        <property name="idSupervisor" type="string">
+            <column name="ID_SUPERVISOR" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>
