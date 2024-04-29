@@ -201,7 +201,7 @@ public class XmlParse
                                 area[i].setCuenta(stk.nextToken());
                             }
                             if (j == 3) {
-                                area[i].setCodiSfsf(stk.nextToken());
+                                area[i].setCodigosf(stk.nextToken());
                             }
                             ++j;
                         }

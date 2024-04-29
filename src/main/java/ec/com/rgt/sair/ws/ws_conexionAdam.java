@@ -32,8 +32,8 @@ public class ws_conexionAdam {
 	    public void updateUsuarios() {
 	 		System.out.println("INICIAL EL METODO UPDATE USUARIOS");
 	 		ConexionADAM.updateDepartamentos();
-	    	ConexionADAM.updateUsuarios();
-	    	ConexionADAM.updateUsuariosAD();
+	    	//ConexionADAM.updateUsuarios();
+	    	//ConexionADAM.updateUsuariosAD();
 	    }
 	 	
 	 	@WebMethod(operationName = "getPlanAnualAIC")

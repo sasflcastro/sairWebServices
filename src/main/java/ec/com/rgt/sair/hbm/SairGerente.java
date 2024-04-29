@@ -20,6 +20,20 @@ public class SairGerente implements java.io.Serializable {
 	private String nombresCompletos;
 	private BigDecimal idArea;
 	private String provincia,cedula,exepcion,email;
+	private String codigosf;
+	
+	
+
+    
+	
+	
+	public String getCodigosf() {
+		return codigosf;
+	}
+
+	public void setCodigosf(String codigosf) {
+		this.codigosf = codigosf;
+	}
 
 	public SairGerente() {
 	}
@@ -31,7 +45,7 @@ public class SairGerente implements java.io.Serializable {
 	public SairGerente(BigDecimal idGerente, String nombre, String usuario,
 			BigDecimal idJefe, BigDecimal idDepartamento, String cargo,
 			String apellido, String estado, String nombresCompletos,
-			BigDecimal idArea,String provincia,String cedula,String idUsuarioAic,String exepcion,String idLocalidad,String email) {
+			BigDecimal idArea,String provincia,String cedula,String idUsuarioAic,String exepcion,String idLocalidad,String email,String codigosf) {
 		this.idGerente = idGerente;
 		this.nombre = nombre;
 		this.usuario = usuario;
@@ -48,8 +62,11 @@ public class SairGerente implements java.io.Serializable {
 		this.exepcion= exepcion;
 		this.idLocalidad = idLocalidad;
 		this.email =email;
+		this.codigosf=codigosf;
 	}
 	
+	
+		
 	public String getEmail() {
 		return email;
 	}
@@ -178,6 +195,7 @@ public class SairGerente implements java.io.Serializable {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+
 
 	
 

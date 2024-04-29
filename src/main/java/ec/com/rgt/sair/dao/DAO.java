@@ -18,6 +18,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.QueryException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.exception.GenericJDBCException;
 import org.hibernate.jdbc.Work;
 
@@ -50,27 +51,46 @@ public class DAO {
 		return (estado);
 	}
 
-	public int saveOrUpdate(Object obj, Class type) {
-		int estado = 0;
-		Session sess = getSession();
-		//System.out.println("Dentro de saveOrUpdate(SOU)");
-		try {
-			sess.beginTransaction(); 
-			sess.saveOrUpdate(type.cast(obj)); 
-			sess.getTransaction().commit();
-			estado = 1;
-		} catch (HibernateException he) {
-			System.out.println("SOU-Se genero error en la TRX");
-			he.printStackTrace();
-			UtilsDAO dao=new UtilsDAO();
-			he.getStackTrace();
-			dao.savelog("DAO", "DAO", "saveOrUpdate", "HibernateException "+type.getSimpleName(), 49, he.getMessage(), "SEGURIDAD", 3);
-		}finally{
-			if(sess!=null)
-				sess.close();
-		}
-		return estado;
+	// Método para actualizar o guardar el objeto
+	public int saveOrUpdate(Object obj, Class<?> type) {
+	    int estado = 0;
+	    Session sess = null;
+	    Transaction transaction = null;
+
+	    try {
+	        // Obtener la sesión y comenzar la transacción
+	        sess = getSession();
+	        transaction = sess.beginTransaction();
+
+	        // Realizar la operación de saveOrUpdate
+	        sess.saveOrUpdate(obj);
+
+	        // Si la operación es exitosa, se confirma la transacción
+	        transaction.commit();
+	        estado = 1; // Indicar operación exitosa
+	    } catch (HibernateException he) {
+	        // Manejo de excepción de Hibernate
+	        System.err.println("Error en la transacción: " + he.getMessage());
+	        he.printStackTrace(); // Imprimir traza de la pila para depuración
+
+	        // Registrar el error utilizando una utilidad de registro (por ejemplo, UtilsDAO)
+	        UtilsDAO dao = new UtilsDAO();
+	        dao.savelog("DAO", "DAO", "saveOrUpdate", "HibernateException " + type.getSimpleName(), 49, he.getMessage(), "SEGURIDAD", 3);
+
+	        // Si la transacción ha sido iniciada y ocurrió un error, se deshace
+	        if (transaction != null) {
+	            transaction.rollback();
+	        }
+	    } finally {
+	        // Asegurar que la sesión se cierre en el bloque finally
+	        if (sess != null) {
+	            sess.close();
+	        }
+	    }
+
+	    return estado; // Retornar el estado (0 para fallo, 1 para éxito)
 	}
+
 
 	public int delete(Object obj, Class type) {
 		int estado = 0;

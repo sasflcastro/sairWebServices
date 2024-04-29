@@ -10,36 +10,99 @@ import java.util.List;
 import ec.com.rgt.sair.hbm.SairGerente;
 import ec.com.rgt.sair.controller.XmlParse;
 import java.util.ArrayList;
+import ec.com.rgt.sair.hbm.SairParametros;
 
 public class ConexionADAM
 {
     public static void main(final String[] arg) {
-        updateDepartamentos();
+    	updateUsuarios();
     }
     
     public static void updateUsuarios() {
         System.out.println("-----ACTUALIZACION DE USUARIOS OPER-----");
         final DAO dao = new DAO();
+       
         final List<String> lis = new ArrayList<String>();
         System.out.println("CONSULTA DE USUARIOS DE OPERACIONES");
-        final SairGerente[] gerentes = XmlParse.parseTrama();
+        //luisana
+        List c = dao.find(" from SairParametros where nombre = 'MIGRACION_SAIR_USUARIOS'");
+		String banderaMigracion ="S";
+		if(c.size()>0){
+			SairParametros claves=(SairParametros) c.get(0);
+			banderaMigracion=String.valueOf(claves.getValor());
+		}
+        
+        
+        List<SairGerente> usuarios = new ArrayList<>();
+        
+        usuarios.add(new SairGerente(BigDecimal.valueOf(30000027), "STEVEN ULLON", "SULLON", BigDecimal.valueOf(30001117), BigDecimal.valueOf(05001203), "GERENTE CENTROS DE ATENCION AL CLIENTE", "CEDE?O MARTINEZ", "A", "CHRISTIAN ESTUARDO CEDENO MARTINEZ", BigDecimal.valueOf(05001600), "GUAYAS", "0950395244", null,null,null,"sullon@CLARO.COM.EC","30000028"));
+        //usuarios.add(new SairGerente(BigDecimal.valueOf(20001957), "MARIA JOSE", "MVALDIVO", BigDecimal.valueOf(30003087), BigDecimal.valueOf(05001604), "ANALISTA DE TALENTO HUMANO", "VALDIVIESO RODRIGUEZ", "A", "MARIA JOSE VALDIVIESO RODRIGUEZ", BigDecimal.valueOf(05001600), "PICHINCHA", "1717516130", null,null,null,"MVALDIVO@CLARO.COM.EC","20001957"));
+        usuarios.add(new SairGerente(BigDecimal.valueOf(30000029), "NESTOR IVAN", "NPARADA", BigDecimal.valueOf(30000044), BigDecimal.valueOf(05001004), "GERENTE DE PROYECTOS Y PROCESOS", "PARADA BETANCOURT", "A", "NESTOR IVAN PARADA BETANCOURT", BigDecimal.valueOf(05002000), "GUAYAS", "0911337285", null,null,null,"NPARADA@CLARO.COM.EC","30000029"));
+        //usuarios.add(new SairGerente(BigDecimal.valueOf(30000029), "NESTOR IVAN", "NPARADA", BigDecimal.valueOf(30000044), BigDecimal.valueOf(05001004), "GERENTE DE PROYECTOS Y PROCESOS", "PARADA BETANCOURT", "A", "NESTOR IVAN PARADA BETANCOURT", BigDecimal.valueOf(05002000), "GUAYAS", "0999999999", null,null,null,"NPARADA@CLARO.COM.EC", BigDecimal.valueOf(30000029)));
+
+        SairGerente[] gerentes = usuarios.toArray(new SairGerente[0]);
+        //final SairGerente[] gerentes = XmlParse.parseTrama();
+        //fin luisana
+        
+
+        if (banderaMigracion.equals("S")) {
+            System.out.println("MIGRACION DE INFORMACION SF A SAIR");
+            System.out.println((gerentes != null) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT USUARIOS");
+            if (gerentes != null) {
+                System.out.println("TOMA CADA USUARIO DE LA TRAMA");
+                for (int i = 0; i < gerentes.length; ++i) {
+                    final SairGerente sf = gerentes[i];
+                    System.out.println("CONSULTA SAIR_GERENTE POR CEDULA: " + sf.getCedula().toString());
+                    try {
+                    
+                        final List<SairGerente> l = (List<SairGerente>) dao.find("from SairGerente a where a.cedula= '" + sf.getCedula()+"'");
+                        
+                        System.out.println("SE PROCEDE A VALIDAR INFORMACION DEL USUARIO EN SAIR CON EL USUARIO EN SF, SE ACTUALIZA INFORMACIÓN DE SER NECESARIO");
+                        for (int j = 0; j < l.size(); ++j) {
+                            boolean ban = false;
+                            SairGerente sair = new SairGerente();
+                            sair = l.get(j);
+                            
+                            if (sair.getCodigosf() == null) {
+      
+                            	sair.setCodigosf(sf.getCodigosf());
+                                dao.saveOrUpdate((Object) sair, (Class) sair.getClass());
+                                System.out.println("ACTUALIZO codigo sf alf usuario " + sair.getCedula());
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error during database query: " + e.getMessage());
+                    }
+                }
+            }
+        
+ 
+     	 
+        } else {
+
+        
         System.out.println((gerentes != null) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT USUARIOS");
         if (gerentes != null) {
             System.out.println("TOMA CADA USUARIO DE LA TRAMA");
             for (int i = 0; i < gerentes.length; ++i) {
                 final SairGerente adam = gerentes[i];
-                System.out.println("ID USUARIO A PROCESAR: " + adam.getIdGerente().toString() + " NAME: " + adam.getUsuario());
-                lis.add(adam.getIdGerente().toString());
-                System.out.println("CONSULTA SAIR_GERENTE POR USUARIO: " + adam.getIdGerente().toString());
-                final List<SairGerente> l = (List<SairGerente>)dao.find("from SairGerente a where a.idGerente=" + adam.getIdGerente());
+                System.out.println("ID USUARIO A PROCESAR: " + adam.getCodigosf().toString() + " NAME: " + adam.getUsuario());
+                lis.add(adam.getCodigosf().toString());
+                System.out.println("CONSULTA SAIR_GERENTE POR USUARIO: " + adam.getCodigosf().toString());
+                final List<SairGerente> l = (List<SairGerente>)dao.find("from SairGerente a where a.codigosf= " + adam.getCodigosf().toString());
                 if (l.isEmpty()) {
-                    System.out.println("NO EXISTE USUARIO EN SAIR_GERENTE " + adam.getIdGerente().toString());
-                    System.out.println("SE CREA NUEVO USUARIO EN SAIR_GERENTE CON ESTADO 'A'");
-                    adam.setEstado("A");
-                    dao.saveOrUpdate((Object)adam, (Class)adam.getClass());
-                    System.out.println("NUEVO U " + adam.getIdGerente());
-                }
-                System.out.println("SE PRODECE A VALIDAR INFORMACION DEL USUARIO EN SAIR CON EL USUARIO EN OPER, SE ACTUALIZA INFORMACI\u00d3N DE SER NECESARIO");
+                	
+                    final List<SairGerente> l2 = (List<SairGerente>)dao.find("from SairGerente a where a.cedula= " + adam.getCedula().toString());
+                    if (l2 == null) {
+	                    System.out.println("NO EXISTE USUARIO EN SAIR_GERENTE " + adam.getCodigosf().toString());
+	                    System.out.println("SE CREA NUEVO USUARIO EN SAIR_GERENTE CON ESTADO 'A'");
+	                    adam.setEstado("A");
+	                    dao.saveOrUpdate((Object)adam, (Class)adam.getClass());
+	                    System.out.println("NUEVO U " + adam.getCodigosf());
+                    } 
+               }
+                
+                System.out.println("SE PRODECE A VALIDAR INFORMACION DEL USUARIO EN SAIR CON EL USUARIO EN SF, SE ACTUALIZA INFORMACI\u00d3N DE SER NECESARIO");
                 for (int j = 0; j < l.size(); ++j) {
                     boolean ban = false;
                     SairGerente areasAdam = new SairGerente();
@@ -69,7 +132,7 @@ public class ConexionADAM
                                 ban = !areasAdam.getProvincia().trim().toUpperCase().equals(adam.getProvincia().trim().toUpperCase());
                             }
                             if (!ban) {
-                                ban = !areasAdam.getCedula().trim().toUpperCase().equals(adam.getCedula().trim().toUpperCase());
+                                ban = !areasAdam.getCedula().trim().toUpperCase().equals(adam.getCedula().trim().toUpperCase());//consultar a jimmy
                             }
                             if (!ban) {
                                 ban = !areasAdam.getIdLocalidad().toString().trim().toUpperCase().equals(adam.getIdLocalidad().toString().trim().toUpperCase());
@@ -106,52 +169,69 @@ public class ConexionADAM
                 }
             }
         }
+        
         if (!lis.isEmpty()) {
-            final List<SairGerente> lista = (List<SairGerente>)dao.find("from SairGerente g where g.estado='A' order by g.idGerente");
+            final List<SairGerente> lista = (List<SairGerente>)dao.find("from SairGerente g where g.estado='A' order by g.codigosf");
             for (int k = 0; k < lista.size(); ++k) {
                 final SairGerente gerent = lista.get(k);
                 boolean elimina = true;
-                for (int m = 0; m < lis.size(); ++m) {
-                    final String adam2 = lis.get(m);
-                    if (gerent.getIdGerente().toString().equals(adam2)) {
+                for (String adam2 : lis) {
+                    if (gerent.getCodigosf() != null && gerent.getCodigosf().toString().equals(adam2)) {
                         elimina = false;
+                        break;
+                    } else if (gerent.getCodigosf() == null) {
                         break;
                     }
                 }
+
                 if (elimina && (gerent.getExepcion() == null || !gerent.getExepcion().equals("S"))) {
                     System.out.println("eliminado U " + gerent.getUsuario());
                     gerent.setEstado("I");
                     dao.saveOrUpdate((Object)gerent, (Class)gerent.getClass());
                 }
             }
+        } 
         }
     }
     
     public static void updateDepartamentos() {
         System.out.println("------ACTUALIZACION DE DEPARTAMENTOS------");
+        
         final DAO dao = new DAO();
         final List<String> idDepartamentoOperList = new ArrayList<String>();
         System.out.println("CONSULTA DE DEPARTAMENTOS A OPERACIONES");
-        final SairAreasAdam[] departamentosOper = XmlParse.parseTramaDepar();
-        System.out.println((departamentosOper != null) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT DEPARTAMENTOS");
-        if (departamentosOper != null) {
+        //final SairAreasAdam[] departamentosOper = XmlParse.parseTramaDepar();
+        List<SairAreasAdam> usuarios = new ArrayList<>();
+        
+        usuarios.add(new SairAreasAdam(BigDecimal.valueOf(05001601),"TALENTO HUMANO", null,"A",null,null,"05001601"));
+        usuarios.add(new SairAreasAdam(BigDecimal.valueOf(05001601),"TALENTO HUMANO", null,"A",null,null,"05001601"));
+        usuarios.add(new SairAreasAdam(BigDecimal.valueOf(05001601),"TALENTO HUMANO", null,"A",null,null,"05001601"));
+    //    usuarios.add(new SairAreasAdam(BigDecimal.valueOf(05001601),"TALENTO HUMANO", null,'A',null,null,'05001601');
+    //    usuarios.add(new SairAreasAdam(BigDecimal.valueOf(05001601),"TALENTO HUMANO", null,'A',null,null,'05001601');
+
+       
+        SairAreasAdam[] SF = usuarios.toArray(new SairAreasAdam[0]);
+
+        
+        System.out.println((SF != null) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT DEPARTAMENTOS");
+        if (SF != null) {
             System.out.println("TOMA CADA DEPART DE LA TRAMA");
-            for (int i = 0; i < departamentosOper.length; ++i) {
-                final SairAreasAdam departamentoOper = departamentosOper[i];
-                System.out.println("ID DEPARTAMENTO A PROCESAR: " + departamentoOper.getCodiSfsf() + " NAME: " + departamentoOper.getDescripcion());
-                idDepartamentoOperList.add(departamentoOper.getCodiSfsf().toString());
-                System.out.println("CONSULTA AREA SAIR PARA EL DEPARTAMENTO " + departamentoOper.getCodiSfsf());
-                final List<SairAreasAdam> areaAdamsList = (List<SairAreasAdam>)dao.find("from SairAreasAdam a where trim(a.codiSfsf)='" + departamentoOper.getCodiSfsf().trim() + "'");
+            for (int i = 0; i < SF.length; ++i) {
+                final SairAreasAdam departamentosSf = SF[i];
+                System.out.println("ID DEPARTAMENTO A PROCESAR: " + departamentosSf.getCodigosf() + " NAME: " + departamentosSf.getDescripcion());
+                idDepartamentoOperList.add(departamentosSf.getCodigosf().toString());
+                System.out.println("CONSULTA AREA SAIR PARA EL DEPARTAMENTO " + departamentosSf.getCodigosf());
+                final List<SairAreasAdam> areaAdamsList = (List<SairAreasAdam>)dao.find("from SairAreasAdam a where trim(a.Codigosf)='" + departamentosSf.getCodigosf().trim() + "'");
                 if (areaAdamsList == null || areaAdamsList.isEmpty()) {
-                    System.out.println("NO EXISTE AREA PARA EL DEPARTAMENTO " + departamentoOper.getCodiSfsf());
+                    System.out.println("NO EXISTE AREA PARA EL DEPARTAMENTO " + departamentosSf.getCodigosf());
                     System.out.println("SE CREA NUEVO DEPARTAMENTO EN SAIR_AREAS_ADAMS CON ESTADO 'A'");
                     final List<String> maxAreaAdam = (List<String>)dao.Sqlquery("select max(id_departamento) + 1 from sair_areas_adam");
                     final Long idDepart = Long.valueOf(maxAreaAdam.get(0));
-                    departamentoOper.setIdDepartamento(BigDecimal.valueOf(idDepart));
-                    departamentoOper.setCuenta("0");
-                    departamentoOper.setEstado("A");
-                    dao.saveOrUpdate((Object)departamentoOper, (Class)departamentoOper.getClass());
-                    System.out.println("NUEVO D " + departamentoOper.getCodiSfsf().trim());
+                    departamentosSf.setIdDepartamento(BigDecimal.valueOf(idDepart));
+                    departamentosSf.setCuenta("0");
+                    departamentosSf.setEstado("A");
+                    dao.saveOrUpdate((Object)departamentosSf, (Class)departamentosSf.getClass());
+                    System.out.println("NUEVO D " + departamentosSf.getCodigosf().trim());
                 }
                 System.out.println("SE PRODECE A VALIDAR INFORMACION DEL AREA EN SAIR CON EL DEPARTAMENTO EN OPER, SE ACTUALIZA INFORMACION DE SER NECESARIO");
                 if (areaAdamsList != null) {
@@ -160,12 +240,12 @@ public class ConexionADAM
                         SairAreasAdam areaAdam = new SairAreasAdam();
                         areaAdam = areaAdamsList.get(j);
                         try {
-                            ban = !areaAdam.getDescripcion().trim().toUpperCase().equals(departamentoOper.getDescripcion().trim().toUpperCase());
+                            ban = !areaAdam.getDescripcion().trim().toUpperCase().equals(departamentosSf.getDescripcion().trim().toUpperCase());
                             if (!ban) {
-                                ban = !areaAdam.getCodiSfsf().trim().toUpperCase().equals(departamentoOper.getCodiSfsf().trim().toUpperCase());
+                                ban = !areaAdam.getCodigosf().trim().toUpperCase().equals(departamentosSf.getCodigosf().trim().toUpperCase());
                             }
                             if (!ban) {
-                                ban = !areaAdam.getCuenta().trim().toUpperCase().equals(departamentoOper.getCuenta().trim().toUpperCase());
+                                ban = !areaAdam.getCuenta().trim().toUpperCase().equals(departamentosSf.getCuenta().trim().toUpperCase());
                             }
                             if (!ban) {
                                 ban = areaAdam.getEstado().equals("I");
@@ -175,12 +255,12 @@ public class ConexionADAM
                             ban = true;
                         }
                         if (ban) {
-                            areaAdam.setDescripcion(departamentoOper.getDescripcion());
-                            areaAdam.setCodiSfsf(departamentoOper.getCodiSfsf());
-                            areaAdam.setCuenta(departamentoOper.getCuenta());
+                            areaAdam.setDescripcion(departamentosSf.getDescripcion());
+                            areaAdam.setCodigosf(departamentosSf.getCodigosf());
+                            areaAdam.setCuenta(departamentosSf.getCuenta());
                             areaAdam.setEstado("A");
                             dao.saveOrUpdate((Object)areaAdam, (Class)areaAdam.getClass());
-                            System.out.println("ACTUALIZO DEPTO " + areaAdam.getCodiSfsf());
+                            System.out.println("ACTUALIZO DEPTO " + areaAdam.getCodigosf());
                         }
                     }
                 }
@@ -193,7 +273,7 @@ public class ConexionADAM
                 boolean elimina = true;
                 for (int l = 0; l < idDepartamentoOperList.size(); ++l) {
                     final String idDepartOper = idDepartamentoOperList.get(l);
-                    if (areaAdam2.getCodiSfsf() != null && areaAdam2.getCodiSfsf().toString().equals(idDepartOper)) {
+                    if (areaAdam2.getCodigosf() != null && areaAdam2.getCodigosf().toString().equals(idDepartOper)) {
                         elimina = false;
                         break;
                     }
