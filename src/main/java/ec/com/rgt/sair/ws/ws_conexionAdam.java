@@ -33,8 +33,8 @@ public class ws_conexionAdam {
 	 	@WebMethod(operationName = "updateUsuarios")
 	    public void updateUsuarios() throws URISyntaxException, IOException, InterruptedException {
 	 		System.out.println("INICIAL EL METODO UPDATE USUARIOS");
-	 		//ConexionADAM.updateDepartamentos();
-	    	ConexionADAM.updateUsuarios();
+	 		ConexionADAM.updateDepartamentos();
+	    	//ConexionADAM.updateUsuarios();
 	    	//ConexionADAM.updateUsuariosAD();
 	    }
 	 	

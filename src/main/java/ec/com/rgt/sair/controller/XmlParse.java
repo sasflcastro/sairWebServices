@@ -53,7 +53,7 @@ public class XmlParse
         XmlParse.props = ResourceBundle.getBundle("EIS");
     }
     
-    public static void main(final String[] s) {
+    public static void main(final String[] s) throws URISyntaxException, IOException, InterruptedException {
         ConexionADAM.updateDepartamentos();
     }
     
@@ -125,6 +125,35 @@ public static List<SairGerente> consultarGerentes(String bandera) throws URISynt
     	return listaEmpleados.getResponse();
     }
     
+public static List<SairAreasAdam> consultarAreas ()throws URISyntaxException, IOException, InterruptedException {
+    
+	String urlService = XmlParse.props.getString("url");
+	String jndiService = XmlParse.props.getString("jdbc");
+    String idServicioInformacion = XmlParse.props.getString("IdServicioInformacionDepa");
+
+	HttpClient client = HttpClient.newHttpClient();
+
+	String request = "{\"source\":\"" + jndiService + "\",\"informationService\":\"" + idServicioInformacion + "\",\"inputs\":[]}";
+
+	HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(urlService))
+			.POST(HttpRequest.BodyPublishers.ofString(request))
+			.header("Content-Type", "application/json")
+			.header( "Accept", "application/json")
+            .version(HttpClient.Version.HTTP_1_1)
+			.build();
+	
+	HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+	
+	Gson gson = new Gson();
+	
+	Type responseType = new TypeToken<MicroJeisResponse<SairGerente>>() {}.getType();
+	
+	MicroJeisResponse<SairAreasAdam> listaAreas = gson.fromJson(httpResponse.body(), responseType);
+	
+	return listaAreas.getResponse();
+}
+
+
     public static SairGerente[] parseTrama() {
         SairGerente[] gerentes = null;
         try {

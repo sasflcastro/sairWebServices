@@ -218,24 +218,22 @@ public class ConexionADAM
         }
     }
     
-    public static void updateDepartamentos() {
+    public static void updateDepartamentos() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("------ACTUALIZACION DE DEPARTAMENTOS------");
         final DAO dao = new DAO();
         String banderaMigracion ="N";
         
         final List<String> idDepartamentoOperList = new ArrayList<String>();
         System.out.println("CONSULTA DE DEPARTAMENTOS A OPERACIONES");
-        //final SairAreasAdam[] departamentosOper = XmlParse.parseTramaDepar();
-        List<SairAreasAdam> usuarios = new ArrayList<>();
-     
-        SairAreasAdam[] SF = usuarios.toArray(new SairAreasAdam[0]);
+          //final SairAreasAdam[] departamentosOper = XmlParse.parseTramaDepar();
+          final List<SairAreasAdam> SF = XmlParse.consultarAreas();
 
         
-        System.out.println((SF != null) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT DEPARTAMENTOS");
-        if (SF != null) {
+        System.out.println((SF.size() > 0) ? "CONSULTA CON RESULTADOS" : "CONSULTA SIN RESULTADOS - TERMINA METODO DE ACT DEPARTAMENTOS");
+        if (SF.size() > 0) {
             System.out.println("TOMA CADA DEPART DE LA TRAMA");
-            for (int i = 0; i < SF.length; ++i) {
-                final SairAreasAdam departamentosSf = SF[i];
+            for (SairAreasAdam area:SF) {
+                final SairAreasAdam departamentosSf = area;
                 System.out.println("ID DEPARTAMENTO A PROCESAR: " + departamentosSf.getCodigosf() + " NAME: " + departamentosSf.getDescripcion());
                 idDepartamentoOperList.add(departamentosSf.getCodigosf().toString());
                 System.out.println("CONSULTA AREA SAIR PARA EL DEPARTAMENTO " + departamentosSf.getCodigosf());
