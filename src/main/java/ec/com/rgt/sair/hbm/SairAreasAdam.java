@@ -1,16 +1,22 @@
 package ec.com.rgt.sair.hbm;
 
 import java.math.BigDecimal;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class SairAreasAdam implements Serializable
 {
+	@SerializedName("area")
     private BigDecimal idDepartamento;
+    @SerializedName("nombre")
     private String descripcion;
     private String codiAdam;
     private String estado;
     private String cuenta;
     private String inicial;
+	@SerializedName("codigo_sf")
     private String codigosf;
 
     
@@ -64,8 +70,6 @@ public class SairAreasAdam implements Serializable
     }
     
    
-  
-
 	public String getCodigosf() {
 		return codigosf;
 	}

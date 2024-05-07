@@ -153,7 +153,7 @@ public class ConexionADAM
                                 ban = !areasAdam.getProvincia().trim().toUpperCase().equals(adam.getProvincia().trim().toUpperCase());
                             }
                             if (!ban) {
-                                ban = !areasAdam.getCedula().trim().toUpperCase().equals(adam.getCedula().trim().toUpperCase());//consultar a jimmy
+                                ban = !areasAdam.getCedula().trim().toUpperCase().equals(adam.getCedula().trim().toUpperCase());
                             }
                             if (!ban) {
                                 ban = !areasAdam.getIdLocalidad().toString().trim().toUpperCase().equals(adam.getIdLocalidad().toString().trim().toUpperCase());
@@ -180,7 +180,7 @@ public class ConexionADAM
                         areasAdam.setIdDepartamento(null);
                         //areasAdam.setNombresCompletos(adam.getNombresCompletos());
                         areasAdam.setNombresCompletos(adam.getApellido() + ' ' + adam.getNombre());
-                        areasAdam.setIdArea(adam.getIdArea());
+                        areasAdam.setIdArea(null);
                         areasAdam.setProvincia(adam.getProvincia());
                         areasAdam.setCedula(adam.getCedula());
                         //areasAdam.setIdLocalidad(adam.getIdLocalidad());
@@ -235,9 +235,9 @@ public class ConexionADAM
             for (SairAreasAdam area:SF) {
                 final SairAreasAdam departamentosSf = area;
                 System.out.println("ID DEPARTAMENTO A PROCESAR: " + departamentosSf.getCodigosf() + " NAME: " + departamentosSf.getDescripcion());
-                idDepartamentoOperList.add(departamentosSf.getCodigosf().toString());
+                idDepartamentoOperList.add(departamentosSf.getCodigosf());
                 System.out.println("CONSULTA AREA SAIR PARA EL DEPARTAMENTO " + departamentosSf.getCodigosf());
-                final List<SairAreasAdam> areaAdamsList = (List<SairAreasAdam>)dao.find("from SairAreasAdam a where trim(a.Codigosf)='" + departamentosSf.getCodigosf().trim() + "'");
+                final List<SairAreasAdam> areaAdamsList = (List<SairAreasAdam>)dao.find("from SairAreasAdam a where a.codigosf='" + departamentosSf.getCodigosf().trim() + "'");
                 if (areaAdamsList == null || areaAdamsList.isEmpty()) {
                     System.out.println("NO EXISTE AREA PARA EL DEPARTAMENTO " + departamentosSf.getCodigosf());
                     System.out.println("SE CREA NUEVO DEPARTAMENTO EN SAIR_AREAS_ADAMS CON ESTADO 'A'");
@@ -247,7 +247,7 @@ public class ConexionADAM
                     departamentosSf.setCuenta("0");
                     departamentosSf.setEstado("A");
                     dao.saveOrUpdate((Object)departamentosSf, (Class)departamentosSf.getClass());
-                    System.out.println("NUEVO D " + departamentosSf.getCodigosf().trim());
+                    System.out.println("NUEVO D " + departamentosSf.getIdDepartamento());
                 }
                 System.out.println("SE PRODECE A VALIDAR INFORMACION DEL AREA EN SAIR CON EL DEPARTAMENTO EN OPER, SE ACTUALIZA INFORMACION DE SER NECESARIO");
                 if (areaAdamsList != null) {
@@ -272,11 +272,11 @@ public class ConexionADAM
                         }
                         if (ban) {
                             areaAdam.setDescripcion(departamentosSf.getDescripcion());
-                            areaAdam.setCodigosf(departamentosSf.getCodigosf());
+                            //areaAdam.setCodigosf(departamentosSf.getCodigosf());
                             areaAdam.setCuenta(departamentosSf.getCuenta());
                             areaAdam.setEstado("A");
                             dao.saveOrUpdate((Object)areaAdam, (Class)areaAdam.getClass());
-                            System.out.println("ACTUALIZO DEPTO " + areaAdam.getCodigosf());
+                            System.out.println("ACTUALIZO DEPTO " + areaAdam.getIdDepartamento());
                         }
                     }
                 }

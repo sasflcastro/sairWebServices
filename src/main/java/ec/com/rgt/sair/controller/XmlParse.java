@@ -146,7 +146,7 @@ public static List<SairAreasAdam> consultarAreas ()throws URISyntaxException, IO
 	
 	Gson gson = new Gson();
 	
-	Type responseType = new TypeToken<MicroJeisResponse<SairGerente>>() {}.getType();
+	Type responseType = new TypeToken<MicroJeisResponse<SairAreasAdam>>() {}.getType();
 	
 	MicroJeisResponse<SairAreasAdam> listaAreas = gson.fromJson(httpResponse.body(), responseType);
 	
