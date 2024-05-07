@@ -53,5 +53,8 @@
         <property name="email" type="string">
             <column name="EMAIL" length="50" />
         </property>
+        <property name="codigosf" type="string">
+            <column name="CODIGO_SF"  length="8" />
+        </property>
     </class>
 </hibernate-mapping>

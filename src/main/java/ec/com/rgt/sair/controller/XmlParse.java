@@ -1,17 +1,27 @@
 package ec.com.rgt.sair.controller;
 
 import ec.com.rgt.sair.hbm.SairObsLocalidad;
+import ec.com.rgt.sair.hbm.SairParametros;
 import ec.com.rgt.sair.hbm.SairAreasAdam;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilder;
 import org.xml.sax.SAXException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import javax.xml.parsers.ParserConfigurationException;
+
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.math.BigDecimal;
 import java.util.StringTokenizer;
 import java.io.StringReader;
+import java.lang.reflect.Type;
+
 import org.xml.sax.InputSource;
 import javax.xml.parsers.DocumentBuilderFactory;
 import ec.com.rgt.sair.hbm.SairGerente;
@@ -22,10 +32,19 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import ec.com.rgt.sair.dao.ConexionADAM;
-import java.util.ResourceBundle;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 
+import ec.com.rgt.sair.dao.ConexionADAM;
+import ec.com.rgt.sair.dao.DAO;
+import ec.com.rgt.sair.dao.MicroJeisResponse;
+
+import java.util.ResourceBundle;
 public class XmlParse
 {
     static ResourceBundle props;
@@ -34,7 +53,7 @@ public class XmlParse
         XmlParse.props = ResourceBundle.getBundle("EIS");
     }
     
-    public static void main(final String[] s) {
+    public static void main(final String[] s) throws URISyntaxException, IOException, InterruptedException {
         ConexionADAM.updateDepartamentos();
     }
     
@@ -69,7 +88,72 @@ public class XmlParse
             return null;
         }
     }
+
+public static List<SairGerente> consultarGerentes(String bandera) throws URISyntaxException, IOException, InterruptedException {
     
+    	String urlService = XmlParse.props.getString("url");
+    	String jndiService = XmlParse.props.getString("jdbc");
+        String idServicioInformacion = XmlParse.props.getString("IdServicioInformacionUser");
+
+        if(bandera == null) {
+        	bandera = "N";
+        }
+        
+        
+    	HttpClient client = HttpClient.newHttpClient();
+   
+    	String request = "{\"source\":\"" + jndiService + "\",\"informationService\":\"" + idServicioInformacion + "\",\"inputs\":[ {\n"
+    	        + "            \"key\": \"pv_banderaMigracion\",\n"
+    	        + "            \"value\": \"S" + bandera + "\"\n"
+    	        + "        }]}";
+
+    	HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(urlService))
+    			.POST(HttpRequest.BodyPublishers.ofString(request))
+    			.header("Content-Type", "application/json")
+    			.header( "Accept", "application/json")
+                .version(HttpClient.Version.HTTP_1_1)
+    			.build();
+    	
+    	HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+    	
+    	Gson gson = new Gson();
+    	
+    	Type responseType = new TypeToken<MicroJeisResponse<SairGerente>>() {}.getType();
+    	
+    	MicroJeisResponse<SairGerente> listaEmpleados = gson.fromJson(httpResponse.body(), responseType);
+    	
+    	return listaEmpleados.getResponse();
+    }
+    
+public static List<SairAreasAdam> consultarAreas ()throws URISyntaxException, IOException, InterruptedException {
+    
+	String urlService = XmlParse.props.getString("url");
+	String jndiService = XmlParse.props.getString("jdbc");
+    String idServicioInformacion = XmlParse.props.getString("IdServicioInformacionDepa");
+
+	HttpClient client = HttpClient.newHttpClient();
+
+	String request = "{\"source\":\"" + jndiService + "\",\"informationService\":\"" + idServicioInformacion + "\",\"inputs\":[]}";
+
+	HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(urlService))
+			.POST(HttpRequest.BodyPublishers.ofString(request))
+			.header("Content-Type", "application/json")
+			.header( "Accept", "application/json")
+            .version(HttpClient.Version.HTTP_1_1)
+			.build();
+	
+	HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+	
+	Gson gson = new Gson();
+	
+	Type responseType = new TypeToken<MicroJeisResponse<SairAreasAdam>>() {}.getType();
+	
+	MicroJeisResponse<SairAreasAdam> listaAreas = gson.fromJson(httpResponse.body(), responseType);
+	
+	return listaAreas.getResponse();
+}
+
+
     public static SairGerente[] parseTrama() {
         SairGerente[] gerentes = null;
         try {
@@ -201,7 +285,7 @@ public class XmlParse
                                 area[i].setCuenta(stk.nextToken());
                             }
                             if (j == 3) {
-                                area[i].setCodiSfsf(stk.nextToken());
+                                area[i].setCodigosf(stk.nextToken());
                             }
                             ++j;
                         }

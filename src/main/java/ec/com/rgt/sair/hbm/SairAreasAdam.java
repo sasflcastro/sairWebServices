@@ -1,17 +1,24 @@
 package ec.com.rgt.sair.hbm;
 
 import java.math.BigDecimal;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class SairAreasAdam implements Serializable
 {
+	@SerializedName("area")
     private BigDecimal idDepartamento;
+    @SerializedName("nombre")
     private String descripcion;
     private String codiAdam;
-    private String codiSfsf;
     private String estado;
     private String cuenta;
     private String inicial;
+	@SerializedName("codigo_sf")
+    private String codigosf;
+
     
     public SairAreasAdam() {
     }
@@ -20,13 +27,14 @@ public class SairAreasAdam implements Serializable
         this.idDepartamento = idDepartamento;
     }
     
-    public SairAreasAdam(final BigDecimal idDepartamento, final String descripcion, final String codiAdam, final String estado, final String cuenta, final String inicial) {
+    public SairAreasAdam(final BigDecimal idDepartamento, final String descripcion, final String codiAdam, final String estado, final String cuenta, final String inicial,final String codigosf) {
         this.idDepartamento = idDepartamento;
         this.descripcion = descripcion;
         this.codiAdam = codiAdam;
         this.estado = estado;
         this.cuenta = cuenta;
         this.inicial = inicial;
+        this.codigosf = codigosf;
     }
     
     public String getInicial() {
@@ -61,15 +69,16 @@ public class SairAreasAdam implements Serializable
         this.codiAdam = codiAdam;
     }
     
-    public String getCodiSfsf() {
-        return this.codiSfsf;
-    }
-    
-    public void setCodiSfsf(final String codiAdam) {
-        this.codiSfsf = codiAdam;
-    }
-    
-    public String getEstado() {
+   
+	public String getCodigosf() {
+		return codigosf;
+	}
+
+	public void setCodigosf(String codigosf) {
+		this.codigosf = codigosf;
+	}
+
+	public String getEstado() {
         return this.estado;
     }
     
@@ -85,3 +94,5 @@ public class SairAreasAdam implements Serializable
         this.cuenta = cuenta;
     }
 }
+
+

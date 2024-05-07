@@ -1,6 +1,8 @@
 package ec.com.rgt.sair.ws;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +31,11 @@ public class ws_conexionAdam {
 	  
 
 	 	@WebMethod(operationName = "updateUsuarios")
-	    public void updateUsuarios() {
+	    public void updateUsuarios() throws URISyntaxException, IOException, InterruptedException {
 	 		System.out.println("INICIAL EL METODO UPDATE USUARIOS");
 	 		ConexionADAM.updateDepartamentos();
-	    	ConexionADAM.updateUsuarios();
-	    	ConexionADAM.updateUsuariosAD();
+	    	//ConexionADAM.updateUsuarios();
+	    	//ConexionADAM.updateUsuariosAD();
 	    }
 	 	
 	 	@WebMethod(operationName = "getPlanAnualAIC")
